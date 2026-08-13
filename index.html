@@ -29,7 +29,6 @@
     --gold-dim:      #9c7f22;
     --steel:         #5B564C;
     --steel-light:   #8b8578;
-    --green:         #3f6b3f;
 
     --font-display: 'Oswald', 'Arial Narrow', sans-serif;
     --font-body:    'Source Serif 4', Georgia, serif;
@@ -104,18 +103,15 @@
     font-size:.68rem; letter-spacing:.16em;
     color:var(--gold); text-transform:uppercase;
   }
-  nav.primary{ display:flex; align-items:center; gap:4px; }
-  nav.primary a, nav.primary button.nav-link{
+  nav.primary{ display:flex; align-items:center; gap:8px; }
+  nav.primary a{
     font-family:var(--font-display);
     font-size:.85rem; letter-spacing:.08em; text-transform:uppercase;
     color:var(--parchment-dim); text-decoration:none;
     padding:10px 16px; border-bottom:2px solid transparent;
     transition:color .15s, border-color .15s;
-    background:none; border-top:0; border-left:0; border-right:0;
   }
-  nav.primary a:hover, nav.primary button.nav-link:hover{ color:var(--gold-bright); border-color:var(--gold-bright); }
-  nav.primary button.nav-link.admin{ color:var(--gold-bright); display:flex; align-items:center; gap:6px; }
-  nav.primary button.nav-link.admin svg{ width:15px; height:15px; }
+  nav.primary a:hover{ color:var(--gold-bright); border-color:var(--gold-bright); }
   .menu-btn{
     display:none; background:none; border:1px solid var(--gold-dim); color:var(--parchment);
     width:42px; height:42px; border-radius:var(--radius); align-items:center; justify-content:center;
@@ -129,8 +125,8 @@
       flex-direction:column; align-items:stretch; gap:0;
       max-height:0; overflow:hidden; transition:max-height .25s ease;
     }
-    nav.primary.open{ max-height:280px; }
-    nav.primary a, nav.primary button.nav-link{ padding:16px 24px; border-bottom:1px solid var(--ink-soft); text-align:left; }
+    nav.primary.open{ max-height:220px; }
+    nav.primary a{ padding:16px 24px; border-bottom:1px solid var(--ink-soft); }
     .menu-btn{ display:inline-flex; }
   }
 
@@ -148,6 +144,7 @@
     border-bottom:1px solid var(--scarlet-dark);
   }
   .hero::before{
+    /* faint stenciled rule motif */
     content:"";
     position:absolute; inset:0;
     background-image:repeating-linear-gradient(115deg, rgba(201,162,39,.05) 0 2px, transparent 2px 64px);
@@ -167,7 +164,9 @@
     text-transform:uppercase;
     letter-spacing:.01em;
   }
-  .hero h1 em{ font-style:normal; color:var(--gold-bright); }
+  .hero h1 em{
+    font-style:normal; color:var(--gold-bright);
+  }
   .hero p.lead{
     font-family:var(--font-body);
     font-size:1.08rem;
@@ -184,7 +183,10 @@
     box-shadow:0 18px 40px -18px rgba(0,0,0,.55);
     max-width:640px;
   }
-  .search-panel .label-row{ display:flex; justify-content:space-between; align-items:baseline; margin-bottom:10px; }
+  .search-panel .label-row{
+    display:flex; justify-content:space-between; align-items:baseline;
+    margin-bottom:10px;
+  }
   .search-panel .label-row span{
     font-family:var(--font-mono); font-size:.68rem; letter-spacing:.12em;
     text-transform:uppercase; color:var(--steel);
@@ -211,7 +213,9 @@
   }
   .search-field button:hover{ background:var(--scarlet-dark); }
 
-  .hero-stats{ display:flex; gap:28px; margin-top:22px; flex-wrap:wrap; }
+  .hero-stats{
+    display:flex; gap:28px; margin-top:22px; flex-wrap:wrap;
+  }
   .hero-stats div{ font-family:var(--font-mono); font-size:.75rem; color:var(--parchment-dim); }
   .hero-stats strong{
     display:block; font-family:var(--font-display); font-size:1.5rem;
@@ -219,13 +223,21 @@
   }
 
   /* ============================================================
-     CHEVRON DIVIDER
+     CHEVRON DIVIDER  — rank-stripe motif used as a section seam
      ============================================================ */
   .chevrons{
     height:22px;
     background:var(--parchment);
-    background-image: repeating-linear-gradient(135deg, transparent, transparent 26px, var(--gold) 26px, var(--gold) 27.5px, transparent 27.5px, transparent 53px),
-                       repeating-linear-gradient(45deg, transparent, transparent 26px, var(--gold) 26px, var(--gold) 27.5px, transparent 27.5px, transparent 53px);
+    background-image: repeating-linear-gradient(
+      135deg, transparent, transparent 26px,
+      var(--gold) 26px, var(--gold) 27.5px,
+      transparent 27.5px, transparent 53px
+    ),
+    repeating-linear-gradient(
+      45deg, transparent, transparent 26px,
+      var(--gold) 26px, var(--gold) 27.5px,
+      transparent 27.5px, transparent 53px
+    );
     background-repeat:repeat-x;
     background-position:center;
     opacity:.55;
@@ -236,10 +248,19 @@
      SECTION SCAFFOLD
      ============================================================ */
   section.block{ padding:60px 0; }
-  .block-head{ display:flex; justify-content:space-between; align-items:flex-end; gap:24px; margin-bottom:30px; flex-wrap:wrap; }
-  .block-head h2{ font-size:clamp(1.6rem, 3vw, 2.2rem); text-transform:uppercase; }
-  .block-head p{ font-family:var(--font-body); color:var(--steel); max-width:52ch; margin:8px 0 0; }
+  .block-head{
+    display:flex; justify-content:space-between; align-items:flex-end;
+    gap:24px; margin-bottom:30px; flex-wrap:wrap;
+  }
+  .block-head h2{
+    font-size:clamp(1.6rem, 3vw, 2.2rem);
+    text-transform:uppercase;
+  }
+  .block-head p{
+    font-family:var(--font-body); color:var(--steel); max-width:52ch; margin:8px 0 0;
+  }
 
+  /* ---- filter / search controls for the collection ---- */
   .controls{
     display:flex; flex-wrap:wrap; gap:10px 12px; align-items:center;
     margin-bottom:28px; padding-bottom:22px; border-bottom:1px solid var(--parchment-dim);
@@ -252,192 +273,125 @@
   }
   .pill:hover{ border-color:var(--scarlet); color:var(--scarlet); }
   .pill.active{ background:var(--scarlet); border-color:var(--scarlet); color:var(--parchment); }
-  .controls .count{ margin-left:auto; font-family:var(--font-mono); font-size:.75rem; color:var(--steel); }
+  .controls .count{
+    margin-left:auto; font-family:var(--font-mono); font-size:.75rem; color:var(--steel);
+  }
 
-  .grid-books{ display:grid; gap:20px; grid-template-columns:repeat(auto-fill, minmax(272px, 1fr)); }
+  /* ---- book grid : index-card styled entries ---- */
+  .grid-books{
+    display:grid; gap:20px;
+    grid-template-columns:repeat(auto-fill, minmax(272px, 1fr));
+  }
   .book-card{
-    background:#fff; border:1px solid var(--parchment-dim); border-top:3px solid var(--gold);
-    padding:20px 20px 18px; display:flex; flex-direction:column; gap:10px; position:relative;
+    background:#fff;
+    border:1px solid var(--parchment-dim);
+    border-top:3px solid var(--gold);
+    padding:20px 20px 18px;
+    display:flex; flex-direction:column; gap:10px;
+    position:relative;
     transition:transform .15s, box-shadow .15s, border-color .15s;
   }
-  .book-card:hover{ transform:translateY(-3px); box-shadow:0 16px 30px -20px rgba(27,23,19,.45); border-top-color:var(--scarlet); }
-  .book-card .row-top{ display:flex; justify-content:space-between; align-items:center; gap:10px; }
+  .book-card:hover{
+    transform:translateY(-3px);
+    box-shadow:0 16px 30px -20px rgba(27,23,19,.45);
+    border-top-color:var(--scarlet);
+  }
+  .book-card .row-top{
+    display:flex; justify-content:space-between; align-items:center; gap:10px;
+  }
   .acq{ font-family:var(--font-mono); font-size:.68rem; color:var(--steel-light); letter-spacing:.04em; }
   .cat-tag{
     font-family:var(--font-mono); font-size:.64rem; letter-spacing:.06em; text-transform:uppercase;
-    color:var(--scarlet); background:rgba(124,16,36,.08); padding:3px 8px; border-radius:2px; white-space:nowrap;
+    color:var(--scarlet); background:rgba(124,16,36,.08);
+    padding:3px 8px; border-radius:2px; white-space:nowrap;
   }
-  .book-card h3{ font-family:var(--font-body); font-weight:600; font-style:normal; font-size:1.14rem; line-height:1.28; color:var(--ink); }
-  .book-card .author{ font-family:var(--font-mono); font-size:.78rem; color:var(--steel); }
-  .book-card p.blurb{ font-size:.92rem; color:var(--steel); margin:2px 0 6px; flex:1; }
-  .book-card .row-bottom{ display:flex; justify-content:space-between; align-items:center; border-top:1px dashed var(--parchment-dim); padding-top:10px; margin-top:auto; }
-  .find-link{ font-family:var(--font-display); font-size:.76rem; letter-spacing:.06em; text-transform:uppercase; color:var(--scarlet); text-decoration:none; display:inline-flex; align-items:center; gap:5px; }
+  .book-card h3{
+    font-family:var(--font-body); font-weight:600; font-style:normal;
+    font-size:1.14rem; line-height:1.28; color:var(--ink);
+  }
+  .book-card .author{
+    font-family:var(--font-mono); font-size:.78rem; color:var(--steel);
+  }
+  .book-card p.blurb{
+    font-size:.92rem; color:var(--steel); margin:2px 0 6px; flex:1;
+  }
+  .book-card .row-bottom{
+    display:flex; justify-content:space-between; align-items:center;
+    border-top:1px dashed var(--parchment-dim); padding-top:10px; margin-top:auto;
+  }
+  .find-link{
+    font-family:var(--font-display); font-size:.76rem; letter-spacing:.06em; text-transform:uppercase;
+    color:var(--scarlet); text-decoration:none; display:inline-flex; align-items:center; gap:5px;
+  }
   .find-link:hover{ color:var(--scarlet-dark); text-decoration:underline; }
   .find-link svg{ width:12px; height:12px; }
 
-  .empty-state{ grid-column:1/-1; text-align:center; padding:50px 20px; color:var(--steel); border:1px dashed var(--parchment-dim); }
+  .empty-state{
+    grid-column:1/-1; text-align:center; padding:50px 20px; color:var(--steel);
+    border:1px dashed var(--parchment-dim);
+  }
   .empty-state strong{ display:block; font-family:var(--font-display); color:var(--ink); margin-bottom:6px; text-transform:uppercase; letter-spacing:.04em;}
 
   /* ============================================================
-     MANAGE COLLECTION (admin panel)
+     EXTERNAL RESOURCES  (dark band)
      ============================================================ */
-  section.manage{
-    display:none;
-    background:var(--parchment-dim);
-    border-top:1px solid var(--gold-dim);
-    border-bottom:1px solid var(--gold-dim);
+  .resources{
+    background:var(--ink); color:var(--parchment);
   }
-  section.manage.open{ display:block; }
-  .manage-grid{ display:grid; grid-template-columns:1.1fr 1.4fr; gap:32px; align-items:start; }
-  @media (max-width:900px){ .manage-grid{ grid-template-columns:1fr; } }
-
-  .manage-panel{ background:#fff; border:1px solid var(--parchment-dim); padding:22px; }
-  .manage-panel h3{ font-size:1rem; text-transform:uppercase; letter-spacing:.04em; margin-bottom:4px; }
-  .manage-panel .hint{ font-family:var(--font-mono); font-size:.72rem; color:var(--steel); margin-bottom:18px; display:block; }
-
-  .field{ margin-bottom:14px; }
-  .field label{ display:block; font-family:var(--font-mono); font-size:.68rem; letter-spacing:.08em; text-transform:uppercase; color:var(--steel); margin-bottom:6px; }
-  .field input[type="text"], .field select, .field textarea{
-    width:100%; border:1px solid var(--parchment-dim); background:var(--parchment);
-    padding:10px 12px; font-family:var(--font-body); font-size:.95rem; color:var(--ink); border-radius:var(--radius);
-  }
-  .field input:focus, .field select:focus, .field textarea:focus{ border-color:var(--scarlet); outline:0; }
-  .field textarea{ resize:vertical; min-height:64px; }
-  .field-row{ display:grid; grid-template-columns:1fr 1fr; gap:12px; }
-  @media (max-width:520px){ .field-row{ grid-template-columns:1fr; } }
-
-  .btn{
-    font-family:var(--font-display); font-size:.78rem; letter-spacing:.07em; text-transform:uppercase;
-    padding:11px 18px; border-radius:var(--radius); border:1px solid transparent; transition:all .15s;
-    display:inline-flex; align-items:center; gap:8px;
-  }
-  .btn-primary{ background:var(--scarlet); color:#fff; }
-  .btn-primary:hover{ background:var(--scarlet-dark); }
-  .btn-ghost{ background:transparent; border-color:var(--steel-light); color:var(--steel); }
-  .btn-ghost:hover{ border-color:var(--ink); color:var(--ink); }
-  .btn-gold{ background:var(--gold); color:var(--ink); }
-  .btn-gold:hover{ background:var(--gold-bright); }
-  .btn-danger{ background:transparent; border-color:#a33; color:#a33; }
-  .btn-danger:hover{ background:#a33; color:#fff; }
-  .btn-sm{ font-size:.68rem; padding:6px 10px; }
-  .form-actions{ display:flex; gap:10px; margin-top:6px; flex-wrap:wrap; }
-
-  .manage-list-panel{ background:#fff; border:1px solid var(--parchment-dim); padding:22px; }
-  .manage-list-panel h3{ font-size:1rem; text-transform:uppercase; letter-spacing:.04em; }
-  .manage-toolbar{ display:flex; flex-wrap:wrap; gap:8px; margin:14px 0 16px; padding-bottom:16px; border-bottom:1px solid var(--parchment-dim); }
-  .manage-table{ max-height:520px; overflow:auto; border:1px solid var(--parchment-dim); }
-  .m-row{
-    display:grid; grid-template-columns:1fr auto; gap:10px; align-items:center;
-    padding:12px 14px; border-bottom:1px solid var(--parchment-dim);
-  }
-  .m-row:last-child{ border-bottom:0; }
-  .m-row .info{ min-width:0; }
-  .m-row .title-line{ font-family:var(--font-body); font-weight:600; font-size:.95rem; color:var(--ink); white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
-  .m-row .meta-line{ font-family:var(--font-mono); font-size:.68rem; color:var(--steel); margin-top:2px; }
-  .m-row .actions{ display:flex; gap:6px; flex:none; }
-  .status-msg{
-    font-family:var(--font-mono); font-size:.75rem; padding:10px 12px; border-radius:var(--radius);
-    margin-top:14px; display:none;
-  }
-  .status-msg.show{ display:block; }
-  .status-msg.ok{ background:rgba(63,107,63,.12); color:var(--green); border:1px solid rgba(63,107,63,.3); }
-  .status-msg.err{ background:rgba(163,51,51,.1); color:#a33; border:1px solid rgba(163,51,51,.3); }
-  #importFile{ display:none; }
-
-  /* ============================================================
-     EXTERNAL RESOURCES
-     ============================================================ */
-  .resources{ background:var(--ink); color:var(--parchment); }
   .resources .eyebrow{ color:var(--gold); }
   .resources .block-head h2{ color:var(--parchment); }
   .resources .block-head p{ color:var(--parchment-dim); }
-  .grid-res{ display:grid; gap:18px; grid-template-columns:repeat(auto-fill, minmax(280px, 1fr)); }
+
+  .grid-res{
+    display:grid; gap:18px;
+    grid-template-columns:repeat(auto-fill, minmax(280px, 1fr));
+  }
   .res-card{
-    background:var(--ink-soft); border:1px solid #3a3129; border-left:3px solid var(--gold);
-    padding:22px; display:flex; flex-direction:column; gap:10px; text-decoration:none; color:var(--parchment);
+    background:var(--ink-soft);
+    border:1px solid #3a3129;
+    border-left:3px solid var(--gold);
+    padding:22px;
+    display:flex; flex-direction:column; gap:10px;
+    text-decoration:none; color:var(--parchment);
     transition:border-color .15s, background .15s;
   }
   .res-card:hover{ border-left-color:var(--gold-bright); background:#2c241c; }
   .res-card .icon{ width:30px; height:30px; color:var(--gold); }
   .res-card h3{ font-family:var(--font-display); font-size:1.02rem; text-transform:uppercase; letter-spacing:.02em; }
   .res-card p{ font-family:var(--font-body); font-size:.9rem; color:var(--parchment-dim); margin:0; flex:1; }
-  .res-card .visit{ font-family:var(--font-mono); font-size:.7rem; letter-spacing:.1em; text-transform:uppercase; color:var(--gold-bright); display:flex; align-items:center; gap:6px; }
+  .res-card .visit{
+    font-family:var(--font-mono); font-size:.7rem; letter-spacing:.1em; text-transform:uppercase;
+    color:var(--gold-bright); display:flex; align-items:center; gap:6px;
+  }
   .res-card .visit svg{ width:12px; height:12px; }
 
-  .note-strip{ margin-top:30px; padding:16px 18px; border:1px solid #3a3129; font-family:var(--font-mono); font-size:.76rem; color:var(--parchment-dim); line-height:1.6; }
+  .note-strip{
+    margin-top:30px; padding:16px 18px; border:1px solid #3a3129;
+    font-family:var(--font-mono); font-size:.76rem; color:var(--parchment-dim); line-height:1.6;
+  }
   .note-strip strong{ color:var(--gold-bright); }
 
   /* ============================================================
      FOOTER
      ============================================================ */
-  footer.site{ background:var(--scarlet-deep); color:var(--parchment-dim); padding:40px 0 26px; border-top:3px solid var(--gold); }
-  .footer-top{ display:flex; justify-content:space-between; align-items:center; gap:20px; flex-wrap:wrap; padding-bottom:24px; border-bottom:1px solid rgba(244,239,225,.15); margin-bottom:20px; }
+  footer.site{
+    background:var(--scarlet-deep); color:var(--parchment-dim);
+    padding:40px 0 26px; border-top:3px solid var(--gold);
+  }
+  .footer-top{
+    display:flex; justify-content:space-between; align-items:center;
+    gap:20px; flex-wrap:wrap; padding-bottom:24px; border-bottom:1px solid rgba(244,239,225,.15);
+    margin-bottom:20px;
+  }
   .footer-top .brand-text .top{ color:var(--parchment); }
   footer.site p{ font-size:.85rem; margin:0; max-width:60ch; }
-  footer.site .legal{ font-family:var(--font-mono); font-size:.7rem; color:rgba(244,239,225,.55); margin-top:18px; line-height:1.7; }
+  footer.site .legal{
+    font-family:var(--font-mono); font-size:.7rem; color:rgba(244,239,225,.55);
+    margin-top:18px; line-height:1.7;
+  }
 </style>
 </head>
 <body>
-
-<!-- ============================================================
-     BAKED-IN CATALOG DATA
-     This block is the site's single source of truth. The
-     "Manage Collection" panel edits it live and can re-download
-     the whole page with your changes baked in — publish that
-     file in place of this one to update what everyone sees.
-     ============================================================ -->
-<script type="application/json" id="book-data">
-[
-  { "id":"b001", "acq":"LDR-001", "title":"Once an Eagle", "author":"Anton Myrer", "category":"Leadership & Command", "blurb":"A novel following two officers of contrasting character across three decades of service; a staple of professional reading lists." },
-  { "id":"b002", "acq":"LDR-002", "title":"Battle Leadership", "author":"Adolf von Schell", "category":"Leadership & Command", "blurb":"A German officer's lectures on the realities of command under fire, drawn from WWI front-line experience." },
-  { "id":"b003", "acq":"LDR-003", "title":"The Defence of Duffer's Drift", "author":"Ernest D. Swinton", "category":"Leadership & Command", "blurb":"A young officer relearns small-unit tactics through six dreamed rehearsals of the same fight." },
-  { "id":"b004", "acq":"STR-001", "title":"On War", "author":"Carl von Clausewitz", "category":"Strategy & Tactics", "blurb":"The foundational treatise on the nature, friction, and political character of war." },
-  { "id":"b005", "acq":"STR-002", "title":"The Art of War", "author":"Sun Tzu", "category":"Strategy & Tactics", "blurb":"Ancient principles on deception, terrain, and command that remain a first reference in strategic thought." },
-  { "id":"b006", "acq":"STR-003", "title":"Small Wars: Their Principles and Practice", "author":"C. E. Callwell", "category":"Strategy & Tactics", "blurb":"A classic study of irregular, colonial, and counter-insurgent operations." },
-  { "id":"b007", "acq":"STR-004", "title":"Warfighting (MCDP 1)", "author":"United States Marine Corps", "category":"Doctrine & Manuals", "blurb":"The Corps' capstone statement on maneuver warfare as a philosophy of combat." },
-  { "id":"b008", "acq":"DOC-002", "title":"Command and Control (MCDP 6)", "author":"United States Marine Corps", "category":"Doctrine & Manuals", "blurb":"Doctrine on decision-making, tempo, and mission command under uncertainty." },
-  { "id":"b009", "acq":"AMP-001", "title":"Amphibious Warfare and Combined Operations", "author":"Bernard Fergusson", "category":"Amphibious & Naval Warfare", "blurb":"A concise study of the planning and execution challenges unique to landing operations." },
-  { "id":"b010", "acq":"AMP-002", "title":"Utmost Savagery: The Three Days of Tarawa", "author":"Joseph H. Alexander", "category":"Amphibious & Naval Warfare", "blurb":"A close operational account of one of the costliest amphibious assaults of the Pacific War." },
-  { "id":"b011", "acq":"AMP-003", "title":"Storm Landings: Epic Amphibious Battles in the Central Pacific", "author":"Joseph H. Alexander", "category":"Amphibious & Naval Warfare", "blurb":"Comparative analysis of successive island-assault campaigns and the lessons each one forced." },
-  { "id":"b012", "acq":"HIS-001", "title":"Tarawa: The Story of a Battle", "author":"Robert Sherrod", "category":"Military History", "blurb":"A war correspondent's firsthand account of the landing and its brutal first day ashore." },
-  { "id":"b013", "acq":"HIS-002", "title":"The Guns at Last Light", "author":"Rick Atkinson", "category":"Military History", "blurb":"The closing volume of the Liberation Trilogy, covering the campaign from Normandy to Germany's surrender." },
-  { "id":"b014", "acq":"HIS-003", "title":"American Caesar: Douglas MacArthur 1880-1964", "author":"William Manchester", "category":"Military History", "blurb":"A biography of the general whose command shaped much of the Pacific War in the Philippines." },
-  { "id":"b015", "acq":"PHL-001", "title":"The Fall of the Philippines", "author":"Louis Morton", "category":"Philippine Military History", "blurb":"The U.S. Army's official history of the 1941-42 defense of Luzon, Bataan, and Corregidor." },
-  { "id":"b016", "acq":"PHL-002", "title":"Corregidor: The Saga of a Fortress", "author":"James H. & William M. Belote", "category":"Philippine Military History", "blurb":"A detailed narrative of the island fortress from its prewar defenses through liberation in 1945." },
-  { "id":"b017", "acq":"PHL-003", "title":"In Our Image: America's Empire in the Philippines", "author":"Stanley Karnow", "category":"Philippine Military History", "blurb":"A history of the American colonial period and its lasting influence on Philippine institutions." },
-  { "id":"b018", "acq":"PRO-001", "title":"The U.S. Naval Institute on Naval Leadership", "author":"Naval Institute Press (ed.)", "category":"Professional Reading", "blurb":"A curated set of essays on command, character, and decision-making at sea." },
-  { "id":"b019", "acq":"PRO-002", "title":"Supplying War: Logistics from Wallenstein to Patton", "author":"Martin van Creveld", "category":"Professional Reading", "blurb":"A study of how logistics, not just strategy, has decided campaigns across four centuries." },
-  { "id":"b020", "acq":"PRO-003", "title":"The Utility of Force", "author":"Rupert Smith", "category":"Professional Reading", "blurb":"An argument that modern conflict is fought 'among the people,' and what that demands of commanders." },
-  { "id":"b021", "acq":"LEA-004", "title":"True North: Discover your Authentic Leadership", "author":"Bill George and Peter Sims", "category":"Leadership & Command", "blurb":"a leadership concept centered on finding and staying true to your core values, purpose, beliefs, and principles while leading others." }
-
-]
-</script>
-<script type="application/json" id="book-data-defaults">
-[
-  { "id":"b001", "acq":"LDR-001", "title":"Once an Eagle", "author":"Anton Myrer", "category":"Leadership & Command", "blurb":"A novel following two officers of contrasting character across three decades of service; a staple of professional reading lists." },
-  { "id":"b002", "acq":"LDR-002", "title":"Battle Leadership", "author":"Adolf von Schell", "category":"Leadership & Command", "blurb":"A German officer's lectures on the realities of command under fire, drawn from WWI front-line experience." },
-  { "id":"b003", "acq":"LDR-003", "title":"The Defence of Duffer's Drift", "author":"Ernest D. Swinton", "category":"Leadership & Command", "blurb":"A young officer relearns small-unit tactics through six dreamed rehearsals of the same fight." },
-  { "id":"b004", "acq":"STR-001", "title":"On War", "author":"Carl von Clausewitz", "category":"Strategy & Tactics", "blurb":"The foundational treatise on the nature, friction, and political character of war." },
-  { "id":"b005", "acq":"STR-002", "title":"The Art of War", "author":"Sun Tzu", "category":"Strategy & Tactics", "blurb":"Ancient principles on deception, terrain, and command that remain a first reference in strategic thought." },
-  { "id":"b006", "acq":"STR-003", "title":"Small Wars: Their Principles and Practice", "author":"C. E. Callwell", "category":"Strategy & Tactics", "blurb":"A classic study of irregular, colonial, and counter-insurgent operations." },
-  { "id":"b007", "acq":"STR-004", "title":"Warfighting (MCDP 1)", "author":"United States Marine Corps", "category":"Doctrine & Manuals", "blurb":"The Corps' capstone statement on maneuver warfare as a philosophy of combat." },
-  { "id":"b008", "acq":"DOC-002", "title":"Command and Control (MCDP 6)", "author":"United States Marine Corps", "category":"Doctrine & Manuals", "blurb":"Doctrine on decision-making, tempo, and mission command under uncertainty." },
-  { "id":"b009", "acq":"AMP-001", "title":"Amphibious Warfare and Combined Operations", "author":"Bernard Fergusson", "category":"Amphibious & Naval Warfare", "blurb":"A concise study of the planning and execution challenges unique to landing operations." },
-  { "id":"b010", "acq":"AMP-002", "title":"Utmost Savagery: The Three Days of Tarawa", "author":"Joseph H. Alexander", "category":"Amphibious & Naval Warfare", "blurb":"A close operational account of one of the costliest amphibious assaults of the Pacific War." },
-  { "id":"b011", "acq":"AMP-003", "title":"Storm Landings: Epic Amphibious Battles in the Central Pacific", "author":"Joseph H. Alexander", "category":"Amphibious & Naval Warfare", "blurb":"Comparative analysis of successive island-assault campaigns and the lessons each one forced." },
-  { "id":"b012", "acq":"HIS-001", "title":"Tarawa: The Story of a Battle", "author":"Robert Sherrod", "category":"Military History", "blurb":"A war correspondent's firsthand account of the landing and its brutal first day ashore." },
-  { "id":"b013", "acq":"HIS-002", "title":"The Guns at Last Light", "author":"Rick Atkinson", "category":"Military History", "blurb":"The closing volume of the Liberation Trilogy, covering the campaign from Normandy to Germany's surrender." },
-  { "id":"b014", "acq":"HIS-003", "title":"American Caesar: Douglas MacArthur 1880-1964", "author":"William Manchester", "category":"Military History", "blurb":"A biography of the general whose command shaped much of the Pacific War in the Philippines." },
-  { "id":"b015", "acq":"PHL-001", "title":"The Fall of the Philippines", "author":"Louis Morton", "category":"Philippine Military History", "blurb":"The U.S. Army's official history of the 1941-42 defense of Luzon, Bataan, and Corregidor." },
-  { "id":"b016", "acq":"PHL-002", "title":"Corregidor: The Saga of a Fortress", "author":"James H. & William M. Belote", "category":"Philippine Military History", "blurb":"A detailed narrative of the island fortress from its prewar defenses through liberation in 1945." },
-  { "id":"b017", "acq":"PHL-003", "title":"In Our Image: America's Empire in the Philippines", "author":"Stanley Karnow", "category":"Philippine Military History", "blurb":"A history of the American colonial period and its lasting influence on Philippine institutions." },
-  { "id":"b018", "acq":"PRO-001", "title":"The U.S. Naval Institute on Naval Leadership", "author":"Naval Institute Press (ed.)", "category":"Professional Reading", "blurb":"A curated set of essays on command, character, and decision-making at sea." },
-  { "id":"b019", "acq":"PRO-002", "title":"Supplying War: Logistics from Wallenstein to Patton", "author":"Martin van Creveld", "category":"Professional Reading", "blurb":"A study of how logistics, not just strategy, has decided campaigns across four centuries." },
-  { "id":"b020", "acq":"PRO-003", "title":"The Utility of Force", "author":"Rupert Smith", "category":"Professional Reading", "blurb":"An argument that modern conflict is fought 'among the people,' and what that demands of commanders." },
-  { "id":"b021", "acq":"LEA-004", "title":"True North: Discover your Authentic Leadership", "author":"Bill George and Peter Sims", "category":"Leadership & Command", "blurb":"a leadership concept centered on finding and staying true to your core values, purpose, beliefs, and principles while leading others." }
-
-]
-</script>
 
 <!-- ============================================================
      HEADER
@@ -461,10 +415,7 @@
     <nav class="primary" id="primaryNav">
       <a href="#collection">The Collection</a>
       <a href="#resources">External Resources</a>
-      <button type="button" class="nav-link admin" id="manageToggle">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 20h9"/><path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4Z"/></svg>
-        Manage Collection
-      </button>
+      <a href="#top">Search</a>
     </nav>
   </div>
 </header>
@@ -479,7 +430,9 @@
     <p class="lead">A working collection of doctrine, strategy, and command reading for Marine officers — built to be searched fast, cited often, and kept close to the billet.</p>
 
     <div class="search-panel">
-      <div class="label-row"><span>Requisition &ndash; Search the Collection</span></div>
+      <div class="label-row">
+        <span>Requisition &ndash; Search the Collection</span>
+      </div>
       <div class="search-field">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg>
         <input type="text" id="heroSearch" placeholder="Title, author, or subject (e.g. amphibious, Clausewitz)&hellip;" autocomplete="off">
@@ -498,77 +451,6 @@
 <div class="chevrons" role="presentation"></div>
 
 <!-- ============================================================
-     MANAGE COLLECTION (hidden until toggled)
-     ============================================================ -->
-<section class="manage" id="manage">
-  <div class="wrap" style="padding:44px 24px;">
-    <div class="block-head">
-      <div>
-        <div class="eyebrow">Admin</div>
-        <h2 style="text-transform:none; font-size:1.5rem;">Manage the Collection</h2>
-        <p>Add, edit, or remove titles below. Changes save to this browser as you work. When you're ready for officers to see the updated list, use <strong>Download Updated Website</strong> and publish that file in place of this one.</p>
-      </div>
-    </div>
-
-    <div class="manage-grid">
-      <!-- ---- Add / Edit form ---- -->
-      <div class="manage-panel">
-        <h3 id="formTitle">Add a Book</h3>
-        <span class="hint">Fields marked * are required.</span>
-        <form id="bookForm">
-          <input type="hidden" id="editId" value="">
-          <div class="field">
-            <label for="fTitle">Title *</label>
-            <input type="text" id="fTitle" required placeholder="e.g. The Guns at Last Light">
-          </div>
-          <div class="field">
-            <label for="fAuthor">Author *</label>
-            <input type="text" id="fAuthor" required placeholder="e.g. Rick Atkinson">
-          </div>
-          <div class="field-row">
-            <div class="field">
-              <label for="fCategory">Category</label>
-              <select id="fCategory"></select>
-            </div>
-            <div class="field" id="newCatWrap" style="display:none;">
-              <label for="fNewCategory">New category name</label>
-              <input type="text" id="fNewCategory" placeholder="e.g. Cyber & Information Warfare">
-            </div>
-          </div>
-          <div class="field">
-            <label for="fAcq">Record No. (auto-filled, editable)</label>
-            <input type="text" id="fAcq" placeholder="e.g. HIS-004">
-          </div>
-          <div class="field">
-            <label for="fBlurb">One-line description</label>
-            <textarea id="fBlurb" placeholder="What is this book about, in one sentence?"></textarea>
-          </div>
-          <div class="form-actions">
-            <button type="submit" class="btn btn-primary" id="submitBtn">Add to Collection</button>
-            <button type="button" class="btn btn-ghost" id="cancelEdit" style="display:none;">Cancel edit</button>
-          </div>
-          <div class="status-msg" id="formStatus"></div>
-        </form>
-      </div>
-
-      <!-- ---- Current list + publish tools ---- -->
-      <div class="manage-list-panel">
-        <h3>Current Titles (<span id="listCount">0</span>)</h3>
-        <div class="manage-toolbar">
-          <button type="button" class="btn btn-gold btn-sm" id="downloadSiteBtn">Download Updated Website</button>
-          <button type="button" class="btn btn-ghost btn-sm" id="exportJsonBtn">Export Catalog (.json)</button>
-          <button type="button" class="btn btn-ghost btn-sm" id="importJsonBtn">Import Catalog (.json)</button>
-          <input type="file" id="importFile" accept="application/json">
-          <button type="button" class="btn btn-danger btn-sm" id="resetBtn">Reset to Starter List</button>
-        </div>
-        <div class="manage-table" id="manageTable"></div>
-      </div>
-    </div>
-  </div>
-</section>
-<div class="chevrons" role="presentation" id="manageDividerBottom" style="display:none;"></div>
-
-<!-- ============================================================
      THE COLLECTION
      ============================================================ -->
 <section class="block" id="collection">
@@ -580,9 +462,12 @@
         <p>Doctrine, tactics, command, and campaign history — filter by subject or search by title and author.</p>
       </div>
     </div>
+
     <div class="controls" id="filterBar">
+      <!-- category pills injected by JS -->
       <span class="count" id="resultCount"></span>
     </div>
+
     <div class="grid-books" id="bookGrid"></div>
   </div>
 </section>
@@ -601,8 +486,12 @@
         <p>When a title isn&rsquo;t in the collection yet, these are established libraries and archives worth searching next.</p>
       </div>
     </div>
+
     <div class="grid-res" id="resGrid"></div>
-    <div class="note-strip"><strong>Note:</strong> external sites are independently operated and outside this collection&rsquo;s control. Availability, access rules, and holdings vary by institution.</div>
+
+    <div class="note-strip">
+      <strong>Note:</strong> external sites are independently operated and outside this collection&rsquo;s control. Availability, access rules, and holdings vary by institution.
+    </div>
   </div>
 </section>
 
@@ -622,55 +511,90 @@
       <p>Karangalan &middot; Katungkulan &middot; Kabayanihan</p>
     </div>
     <p>Built as a standing reading resource for Marine officers to locate professional and historical titles quickly, on any device.</p>
+    <p class="legal">This is an independent reading-collection tool and is not an official system of the Armed Forces of the Philippines, the Philippine Navy, or the Philippine Marine Corps. The sample titles above are a starting catalogue — replace the entries in the site&rsquo;s book list to reflect your unit&rsquo;s actual holdings.</p>
   </div>
 </footer>
 
 <script>
 /* ============================================================
-   STATE
+   BOOK DATA
+   Edit this array to maintain the catalogue — no other code
+   needs to change. Each entry: acq (record no.), title, author,
+   category, blurb (one line).
    ============================================================ */
-const STORAGE_KEY = 'pmc_library_books_v1';
-let BOOKS = [];
-let activeCategory = "All";
-let searchTerm = "";
+const BOOKS = [
+  { acq:"LDR-001", title:"Once an Eagle", author:"Anton Myrer", category:"Leadership & Command", blurb:"A novel following two officers of contrasting character across three decades of service; a staple of professional reading lists." },
+  { acq:"LDR-002", title:"Battle Leadership", author:"Adolf von Schell", category:"Leadership & Command", blurb:"A German officer's lectures on the realities of command under fire, drawn from WWI front-line experience." },
+  { acq:"LDR-003", title:"The Defence of Duffer's Drift", author:"Ernest D. Swinton", category:"Leadership & Command", blurb:"A young officer relearns small-unit tactics through six dreamed rehearsals of the same fight." },
+  { acq:"STR-001", title:"On War", author:"Carl von Clausewitz", category:"Strategy & Tactics", blurb:"The foundational treatise on the nature, friction, and political character of war." },
+  { acq:"STR-002", title:"The Art of War", author:"Sun Tzu", category:"Strategy & Tactics", blurb:"Ancient principles on deception, terrain, and command that remain a first reference in strategic thought." },
+  { acq:"STR-003", title:"Small Wars: Their Principles and Practice", author:"C. E. Callwell", category:"Strategy & Tactics", blurb:"A classic study of irregular, colonial, and counter-insurgent operations." },
+  { acq:"DOC-001", title:"Warfighting (MCDP 1)", author:"United States Marine Corps", category:"Doctrine & Manuals", blurb:"The Corps' capstone statement on maneuver warfare as a philosophy of combat." },
+  { acq:"DOC-002", title:"Command and Control (MCDP 6)", author:"United States Marine Corps", category:"Doctrine & Manuals", blurb:"Doctrine on decision-making, tempo, and mission command under uncertainty." },
+  { acq:"AMP-001", title:"Amphibious Warfare and Combined Operations", author:"Bernard Fergusson", category:"Amphibious & Naval Warfare", blurb:"A concise study of the planning and execution challenges unique to landing operations." },
+  { acq:"AMP-002", title:"Utmost Savagery: The Three Days of Tarawa", author:"Joseph H. Alexander", category:"Amphibious & Naval Warfare", blurb:"A close operational account of one of the costliest amphibious assaults of the Pacific War." },
+  { acq:"AMP-003", title:"Storm Landings: Epic Amphibious Battles in the Central Pacific", author:"Joseph H. Alexander", category:"Amphibious & Naval Warfare", blurb:"Comparative analysis of successive island-assault campaigns and the lessons each one forced." },
+  { acq:"HIS-001", title:"Tarawa: The Story of a Battle", author:"Robert Sherrod", category:"Military History", blurb:"A war correspondent's firsthand account of the landing and its brutal first day ashore." },
+  { acq:"HIS-002", title:"The Guns at Last Light", author:"Rick Atkinson", category:"Military History", blurb:"The closing volume of the Liberation Trilogy, covering the campaign from Normandy to Germany's surrender." },
+  { acq:"HIS-003", title:"American Caesar: Douglas MacArthur 1880–1964", author:"William Manchester", category:"Military History", blurb:"A biography of the general whose command shaped much of the Pacific War in the Philippines." },
+  { acq:"PHL-001", title:"The Fall of the Philippines", author:"Louis Morton", category:"Philippine Military History", blurb:"The U.S. Army's official history of the 1941–42 defense of Luzon, Bataan, and Corregidor." },
+  { acq:"PHL-002", title:"Corregidor: The Saga of a Fortress", author:"James H. & William M. Belote", category:"Philippine Military History", blurb:"A detailed narrative of the island fortress from its prewar defenses through liberation in 1945." },
+  { acq:"PHL-003", title:"In Our Image: America's Empire in the Philippines", author:"Stanley Karnow", category:"Philippine Military History", blurb:"A history of the American colonial period and its lasting influence on Philippine institutions." },
+  { acq:"PRO-001", title:"The U.S. Naval Institute on Naval Leadership", author:"Naval Institute Press (ed.)", category:"Professional Reading", blurb:"A curated set of essays on command, character, and decision-making at sea." },
+  { acq:"PRO-002", title:"Supplying War: Logistics from Wallenstein to Patton", author:"Martin van Creveld", category:"Professional Reading", blurb:"A study of how logistics — not just strategy — has decided campaigns across four centuries." },
+  { acq:"PRO-003", title:"The Utility of Force", author:"Rupert Smith", category:"Professional Reading", blurb:"An argument that modern conflict is fought 'among the people,' and what that demands of commanders." },
+  { acq:"LDR-004", title:"True North: Discover your Authentic Leadership", author:"Bill George and Peter Sims", category:"Leadership & Command", blurb:"a leadership concept centered on finding and staying true to your core values, purpose, beliefs, and principles while leading others." }
+];
 
-function loadDefaults(){ return JSON.parse(document.getElementById('book-data').textContent); }
-function loadStarterDefaults(){ return JSON.parse(document.getElementById('book-data-defaults').textContent); }
-
-function loadBooks(){
-  const stored = localStorage.getItem(STORAGE_KEY);
-  if(stored){
-    try{ return JSON.parse(stored); } catch(e){ /* fall through */ }
-  }
-  return loadDefaults();
-}
-
-function getCategories(){
-  return ["All", ...Array.from(new Set(BOOKS.map(b => b.category))).sort()];
-}
-
-function persist(){
-  localStorage.setItem(STORAGE_KEY, JSON.stringify(BOOKS));
-  document.getElementById('book-data').textContent = JSON.stringify(BOOKS);
-  renderFilterBar();
-  renderBooks();
-  renderManageList();
-  populateCategorySelect();
-  updateStats();
-}
+const CATEGORIES = ["All", ...new Set(BOOKS.map(b => b.category))];
 
 /* ============================================================
-   EXTERNAL RESOURCE DATA (static)
+   EXTERNAL RESOURCE DATA
    ============================================================ */
 const RESOURCES = [
-  { name:"National Library of the Philippines", url:"https://web.nlp.gov.ph/", desc:"The country's central repository of Filipiniana — books, manuscripts, and government publications.", icon:`<path d="M4 19V6a2 2 0 0 1 2-2h9l5 5v10a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2Z"/><path d="M15 4v5h5"/>` },
-  { name:"Library of the Marine Corps", url:"https://grc-usmcu.libguides.com/library", desc:"The USMC's research library at Marine Corps University — professional military education and warfighting research.", icon:`<path d="M12 3l9 5-9 5-9-5 9-5Z"/><path d="M3 12l9 5 9-5"/><path d="M3 17l9 5 9-5"/>` },
-  { name:"HathiTrust Digital Library", url:"https://www.hathitrust.org", desc:"A partnership of research libraries offering full-text search across millions of digitized volumes.", icon:`<rect x="3" y="4" width="7" height="16" rx="1"/><rect x="14" y="4" width="7" height="16" rx="1"/>` },
-  { name:"Internet Archive", url:"https://archive.org", desc:"A non-profit digital library with a large lending collection of scanned books, texts, and historical documents.", icon:`<path d="M3 8l9-5 9 5-9 5-9-5Z"/><path d="M3 8v9l9 5 9-5V8"/><circle cx="12" cy="8" r="2"/>` },
-  { name:"Project Gutenberg", url:"https://www.gutenberg.org", desc:"Tens of thousands of free public-domain e-books, useful for older strategy and history texts.", icon:`<path d="M12 4v16"/><path d="M4 6c3-2 6-2 8 0V20c-2-2-5-2-8 0V6Z"/><path d="M20 6c-3-2-6-2-8 0V20c2-2 5-2 8 0V6Z"/>` },
-  { name:"Google Books", url:"https://books.google.com", desc:"A fast way to check a title's availability, editions, and preview pages before requesting a copy.", icon:`<circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/>` }
+  {
+    name:"National Library of the Philippines",
+    url:"https://web.nlp.gov.ph/",
+    desc:"The country's central repository of Filipiniana — books, manuscripts, and government publications.",
+    icon:`<path d="M4 19V6a2 2 0 0 1 2-2h9l5 5v10a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2Z"/><path d="M15 4v5h5"/>`
+  },
+  {
+    name:"Library of the Marine Corps",
+    url:"https://grc-usmcu.libguides.com/library",
+    desc:"The USMC's research library at Marine Corps University — professional military education and warfighting research.",
+    icon:`<path d="M12 3l9 5-9 5-9-5 9-5Z"/><path d="M3 12l9 5 9-5"/><path d="M3 17l9 5 9-5"/>`
+  },
+  {
+    name:"HathiTrust Digital Library",
+    url:"https://www.hathitrust.org",
+    desc:"A partnership of research libraries offering full-text search across millions of digitized volumes.",
+    icon:`<rect x="3" y="4" width="7" height="16" rx="1"/><rect x="14" y="4" width="7" height="16" rx="1"/>`
+  },
+  {
+    name:"Internet Archive",
+    url:"https://archive.org",
+    desc:"A non-profit digital library with a large lending collection of scanned books, texts, and historical documents.",
+    icon:`<path d="M3 8l9-5 9 5-9 5-9-5Z"/><path d="M3 8v9l9 5 9-5V8"/><circle cx="12" cy="8" r="2"/>`
+  },
+  {
+    name:"Project Gutenberg",
+    url:"https://www.gutenberg.org",
+    desc:"Tens of thousands of free public-domain e-books, useful for older strategy and history texts.",
+    icon:`<path d="M12 4v16"/><path d="M4 6c3-2 6-2 8 0V20c-2-2-5-2-8 0V6Z"/><path d="M20 6c-3-2-6-2-8 0V20c2-2 5-2 8 0V6Z"/>`
+  },
+  {
+    name:"Google Books",
+    url:"https://books.google.com",
+    desc:"A fast way to check a title's availability, editions, and preview pages before requesting a copy.",
+    icon:`<circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/>`
+  }
 ];
-document.getElementById('resGrid').innerHTML = RESOURCES.map(r => `
+
+/* ============================================================
+   RENDER: resources (static)
+   ============================================================ */
+const resGrid = document.getElementById('resGrid');
+resGrid.innerHTML = RESOURCES.map(r => `
   <a class="res-card" href="${r.url}" target="_blank" rel="noopener noreferrer">
     <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">${r.icon}</svg>
     <h3>${r.name}</h3>
@@ -682,46 +606,32 @@ document.getElementById('resGrid').innerHTML = RESOURCES.map(r => `
 `).join('');
 
 /* ============================================================
-   HELPERS
+   RENDER: filter pills
    ============================================================ */
-function escapeHtml(str){
-  return String(str).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
-}
-function genId(){ return 'b_' + Math.random().toString(36).slice(2,10); }
-function makeAcq(category){
-  const prefix = (category || 'GEN').replace(/[^A-Za-z]/g,'').slice(0,3).toUpperCase() || 'GEN';
-  const count = BOOKS.filter(b => b.category === category).length + 1;
-  return `${prefix}-${String(count).padStart(3,'0')}`;
-}
+const filterBar = document.getElementById('filterBar');
+let activeCategory = "All";
+let searchTerm = "";
 
-/* ============================================================
-   RENDER: filter pills (Collection section)
-   ============================================================ */
-function renderFilterBar(){
-  const bar = document.getElementById('filterBar');
-  const cats = getCategories();
-  if(!cats.includes(activeCategory)) activeCategory = "All";
-  bar.querySelectorAll('.pill').forEach(p => p.remove());
-  const countEl = document.getElementById('resultCount');
-  cats.forEach(cat => {
-    const btn = document.createElement('button');
-    btn.className = 'pill' + (cat === activeCategory ? " active" : "");
-    btn.textContent = cat;
-    btn.dataset.cat = cat;
-    btn.addEventListener('click', () => {
-      activeCategory = cat;
-      renderFilterBar();
-      renderBooks();
-    });
-    bar.insertBefore(btn, countEl);
+CATEGORIES.forEach(cat => {
+  const btn = document.createElement('button');
+  btn.className = 'pill' + (cat === "All" ? " active" : "");
+  btn.textContent = cat;
+  btn.dataset.cat = cat;
+  btn.addEventListener('click', () => {
+    activeCategory = cat;
+    document.querySelectorAll('.pill').forEach(p => p.classList.toggle('active', p.dataset.cat === cat));
+    renderBooks();
   });
-}
+  filterBar.insertBefore(btn, document.getElementById('resultCount'));
+});
 
 /* ============================================================
-   RENDER: book grid (Collection section)
+   RENDER: book grid
    ============================================================ */
+const bookGrid = document.getElementById('bookGrid');
+const resultCount = document.getElementById('resultCount');
+
 function renderBooks(){
-  const grid = document.getElementById('bookGrid');
   const term = searchTerm.trim().toLowerCase();
   const filtered = BOOKS.filter(b => {
     const matchesCat = activeCategory === "All" || b.category === activeCategory;
@@ -729,28 +639,28 @@ function renderBooks(){
       b.title.toLowerCase().includes(term) ||
       b.author.toLowerCase().includes(term) ||
       b.category.toLowerCase().includes(term) ||
-      (b.blurb || '').toLowerCase().includes(term);
+      b.blurb.toLowerCase().includes(term);
     return matchesCat && matchesTerm;
   });
 
-  document.getElementById('resultCount').textContent = `${filtered.length} of ${BOOKS.length} titles`;
+  resultCount.textContent = `${filtered.length} of ${BOOKS.length} titles`;
 
   if(filtered.length === 0){
-    grid.innerHTML = `<div class="empty-state"><strong>No matches on file</strong>Try a different title, author, or subject term.</div>`;
+    bookGrid.innerHTML = `<div class="empty-state"><strong>No matches on file</strong>Try a different title, author, or subject term.</div>`;
     return;
   }
 
-  grid.innerHTML = filtered.map(b => {
+  bookGrid.innerHTML = filtered.map(b => {
     const q = encodeURIComponent(`${b.title} ${b.author}`);
     return `
     <article class="book-card">
       <div class="row-top">
-        <span class="acq">${escapeHtml(b.acq || '')}</span>
-        <span class="cat-tag">${escapeHtml(b.category)}</span>
+        <span class="acq">${b.acq}</span>
+        <span class="cat-tag">${b.category}</span>
       </div>
-      <h3>${escapeHtml(b.title)}</h3>
-      <span class="author">${escapeHtml(b.author)}</span>
-      <p class="blurb">${escapeHtml(b.blurb || '')}</p>
+      <h3>${b.title}</h3>
+      <span class="author">${b.author}</span>
+      <p class="blurb">${b.blurb}</p>
       <div class="row-bottom">
         <a class="find-link" href="https://www.google.com/search?tbm=bks&q=${q}" target="_blank" rel="noopener noreferrer">
           Find a copy
@@ -762,210 +672,22 @@ function renderBooks(){
 }
 
 /* ============================================================
-   MANAGE PANEL — form + list
-   ============================================================ */
-const form = document.getElementById('bookForm');
-const fTitle = document.getElementById('fTitle');
-const fAuthor = document.getElementById('fAuthor');
-const fCategory = document.getElementById('fCategory');
-const fNewCategory = document.getElementById('fNewCategory');
-const newCatWrap = document.getElementById('newCatWrap');
-const fAcq = document.getElementById('fAcq');
-const fBlurb = document.getElementById('fBlurb');
-const editId = document.getElementById('editId');
-const formTitle = document.getElementById('formTitle');
-const submitBtn = document.getElementById('submitBtn');
-const cancelEditBtn = document.getElementById('cancelEdit');
-const formStatus = document.getElementById('formStatus');
-
-function populateCategorySelect(){
-  const cats = getCategories().filter(c => c !== "All");
-  const current = fCategory.value;
-  fCategory.innerHTML = cats.map(c => `<option value="${escapeHtml(c)}">${escapeHtml(c)}</option>`).join('') +
-    `<option value="__new__">+ Add new category&hellip;</option>`;
-  if(cats.includes(current)) fCategory.value = current;
-  toggleNewCatField();
-}
-function toggleNewCatField(){
-  newCatWrap.style.display = fCategory.value === "__new__" ? "block" : "none";
-}
-fCategory.addEventListener('change', toggleNewCatField);
-fCategory.addEventListener('change', () => {
-  if(!editId.value && fCategory.value !== "__new__"){
-    fAcq.value = makeAcq(fCategory.value);
-  }
-});
-
-function showStatus(msg, type){
-  formStatus.textContent = msg;
-  formStatus.className = 'status-msg show ' + type;
-  setTimeout(() => formStatus.classList.remove('show'), 3200);
-}
-
-function resetForm(){
-  form.reset();
-  editId.value = '';
-  formTitle.textContent = 'Add a Book';
-  submitBtn.textContent = 'Add to Collection';
-  cancelEditBtn.style.display = 'none';
-  populateCategorySelect();
-  fAcq.value = makeAcq(fCategory.value);
-}
-
-form.addEventListener('submit', e => {
-  e.preventDefault();
-  const title = fTitle.value.trim();
-  const author = fAuthor.value.trim();
-  if(!title || !author){ showStatus('Title and author are required.', 'err'); return; }
-
-  let category = fCategory.value;
-  if(category === "__new__"){
-    category = fNewCategory.value.trim();
-    if(!category){ showStatus('Enter a name for the new category.', 'err'); return; }
-  }
-
-  const blurb = fBlurb.value.trim();
-  const acq = fAcq.value.trim() || makeAcq(category);
-
-  if(editId.value){
-    const b = BOOKS.find(x => x.id === editId.value);
-    if(b){ Object.assign(b, { title, author, category, blurb, acq }); }
-    showStatus('Entry updated.', 'ok');
-  } else {
-    BOOKS.push({ id: genId(), acq, title, author, category, blurb });
-    showStatus('Book added to the collection.', 'ok');
-  }
-  persist();
-  resetForm();
-});
-
-cancelEditBtn.addEventListener('click', resetForm);
-
-function renderManageList(){
-  const list = document.getElementById('manageTable');
-  document.getElementById('listCount').textContent = BOOKS.length;
-  if(BOOKS.length === 0){
-    list.innerHTML = `<div class="empty-state" style="border:0;">No books yet — add your first title using the form.</div>`;
-    return;
-  }
-  list.innerHTML = BOOKS.map(b => `
-    <div class="m-row">
-      <div class="info">
-        <div class="title-line">${escapeHtml(b.title)}</div>
-        <div class="meta-line">${escapeHtml(b.author)} &middot; ${escapeHtml(b.category)} &middot; ${escapeHtml(b.acq || '')}</div>
-      </div>
-      <div class="actions">
-        <button type="button" class="btn btn-ghost btn-sm" data-edit="${b.id}">Edit</button>
-        <button type="button" class="btn btn-danger btn-sm" data-del="${b.id}">Remove</button>
-      </div>
-    </div>
-  `).join('');
-
-  list.querySelectorAll('[data-edit]').forEach(btn => {
-    btn.addEventListener('click', () => {
-      const b = BOOKS.find(x => x.id === btn.dataset.edit);
-      if(!b) return;
-      editId.value = b.id;
-      fTitle.value = b.title;
-      fAuthor.value = b.author;
-      populateCategorySelect();
-      fCategory.value = b.category;
-      toggleNewCatField();
-      fAcq.value = b.acq || '';
-      fBlurb.value = b.blurb || '';
-      formTitle.textContent = 'Edit Book';
-      submitBtn.textContent = 'Update Entry';
-      cancelEditBtn.style.display = 'inline-flex';
-      document.getElementById('manage').scrollIntoView({behavior:'smooth', block:'start'});
-    });
-  });
-  list.querySelectorAll('[data-del]').forEach(btn => {
-    btn.addEventListener('click', () => {
-      const b = BOOKS.find(x => x.id === btn.dataset.del);
-      if(!b) return;
-      if(!confirm(`Remove "${b.title}" from the collection?`)) return;
-      BOOKS = BOOKS.filter(x => x.id !== btn.dataset.del);
-      persist();
-      if(editId.value === btn.dataset.del) resetForm();
-    });
-  });
-}
-
-/* ---- Publish / backup tools ---- */
-document.getElementById('downloadSiteBtn').addEventListener('click', () => {
-  document.getElementById('book-data').textContent = JSON.stringify(BOOKS);
-  const manageSection = document.getElementById('manage');
-  const wasOpen = manageSection.classList.contains('open');
-  manageSection.classList.remove('open');
-  const htmlContent = "<!DOCTYPE html>\n" + document.documentElement.outerHTML;
-  if(wasOpen) manageSection.classList.add('open');
-  const blob = new Blob([htmlContent], {type:'text/html'});
-  const url = URL.createObjectURL(blob);
-  const a = document.createElement('a');
-  a.href = url; a.download = 'index.html';
-  document.body.appendChild(a); a.click(); a.remove();
-  URL.revokeObjectURL(url);
-});
-
-document.getElementById('exportJsonBtn').addEventListener('click', () => {
-  const blob = new Blob([JSON.stringify(BOOKS, null, 2)], {type:'application/json'});
-  const url = URL.createObjectURL(blob);
-  const a = document.createElement('a');
-  a.href = url; a.download = 'pmc-library-catalog.json';
-  document.body.appendChild(a); a.click(); a.remove();
-  URL.revokeObjectURL(url);
-});
-
-const importFile = document.getElementById('importFile');
-document.getElementById('importJsonBtn').addEventListener('click', () => importFile.click());
-importFile.addEventListener('change', () => {
-  const file = importFile.files[0];
-  if(!file) return;
-  const reader = new FileReader();
-  reader.onload = () => {
-    try{
-      const parsed = JSON.parse(reader.result);
-      if(!Array.isArray(parsed)) throw new Error('not an array');
-      BOOKS = parsed.map(b => ({
-        id: b.id || genId(),
-        acq: b.acq || '',
-        title: b.title || 'Untitled',
-        author: b.author || 'Unknown',
-        category: b.category || 'Uncategorized',
-        blurb: b.blurb || ''
-      }));
-      persist();
-      showStatus('Catalog imported.', 'ok');
-    } catch(err){
-      showStatus('That file could not be read as a catalog export.', 'err');
-    }
-  };
-  reader.readAsText(file);
-  importFile.value = '';
-});
-
-document.getElementById('resetBtn').addEventListener('click', () => {
-  if(!confirm('Reset the collection to the original starter list? Your added titles will be removed from this browser.')) return;
-  BOOKS = loadStarterDefaults();
-  persist();
-  resetForm();
-});
-
-/* ============================================================
    SEARCH WIRING
    ============================================================ */
 const heroSearch = document.getElementById('heroSearch');
+const heroSearchBtn = document.getElementById('heroSearchBtn');
+
 function runSearch(){
   searchTerm = heroSearch.value;
   renderBooks();
   document.getElementById('collection').scrollIntoView({behavior:'smooth', block:'start'});
 }
-document.getElementById('heroSearchBtn').addEventListener('click', runSearch);
+heroSearchBtn.addEventListener('click', runSearch);
 heroSearch.addEventListener('keydown', e => { if(e.key === 'Enter') runSearch(); });
 heroSearch.addEventListener('input', () => { searchTerm = heroSearch.value; renderBooks(); });
 
 /* ============================================================
-   MOBILE NAV + MANAGE TOGGLE
+   MOBILE NAV
    ============================================================ */
 const menuBtn = document.getElementById('menuBtn');
 const primaryNav = document.getElementById('primaryNav');
@@ -973,29 +695,17 @@ menuBtn.addEventListener('click', () => {
   const open = primaryNav.classList.toggle('open');
   menuBtn.setAttribute('aria-expanded', open);
 });
-
-const manageSection = document.getElementById('manage');
-document.getElementById('manageToggle').addEventListener('click', () => {
-  const open = manageSection.classList.toggle('open');
-  if(open) manageSection.scrollIntoView({behavior:'smooth', block:'start'});
+primaryNav.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
   primaryNav.classList.remove('open');
-});
+  menuBtn.setAttribute('aria-expanded', false);
+}));
 
 /* ============================================================
-   STATS
+   STATS + INITIAL RENDER
    ============================================================ */
-function updateStats(){
-  document.getElementById('statTitles').textContent = BOOKS.length;
-  document.getElementById('statCats').textContent = getCategories().length - 1;
-}
-
-/* ============================================================
-   INIT
-   ============================================================ */
-BOOKS = loadBooks();
-populateCategorySelect();
-fAcq.value = makeAcq(fCategory.value);
-persist();
+document.getElementById('statTitles').textContent = BOOKS.length;
+document.getElementById('statCats').textContent = CATEGORIES.length - 1;
+renderBooks();
 </script>
 </body>
 </html>
