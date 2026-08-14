@@ -13,8 +13,9 @@
 <style>
   /* ============================================================
      TOKENS
-     Corps colors: scarlet & gold (with a navy note), per PMC
-     insignia. Ink stands in for the navy/near-black in print.
+     Official PMC colors: scarlet & gold (base of the Marine Corps
+     guidon), with navy as the secondary naval note. Ink stands in
+     for the near-black in print/insignia contexts.
      ============================================================ */
   :root{
     --scarlet:       #7C1024;
@@ -29,7 +30,6 @@
     --gold-dim:      #9c7f22;
     --steel:         #5B564C;
     --steel-light:   #8b8578;
-    --green:         #3f6b3f;
 
     --font-display: 'Oswald', 'Arial Narrow', sans-serif;
     --font-body:    'Source Serif 4', Georgia, serif;
@@ -75,7 +75,15 @@
   }
 
   /* ============================================================
-     CREST  (shared shield mark: sun ray + anchor motif)
+     TOP RIBBON  (braid-trim strip, evokes the guidon border)
+     ============================================================ */
+  .top-ribbon{
+    height:7px; width:100%;
+    background:repeating-linear-gradient(-45deg, var(--gold) 0 10px, var(--scarlet) 10px 20px);
+  }
+
+  /* ============================================================
+     CREST  (sun-shield-and-anchor mark, after the PMC seal)
      ============================================================ */
   .crest{ flex:none; }
   .crest circle.ring{ fill:none; stroke:var(--gold); stroke-width:1.4; }
@@ -85,8 +93,9 @@
      ============================================================ */
   header.site{
     position:sticky; top:0; z-index:40;
-    background:var(--ink);
+    background:linear-gradient(180deg, var(--scarlet) 0%, var(--scarlet-dark) 100%);
     border-bottom:3px solid var(--gold);
+    box-shadow:0 2px 0 var(--ink);
   }
   .site .wrap{
     display:flex; align-items:center; justify-content:space-between;
@@ -122,12 +131,12 @@
   @media (max-width:800px){
     nav.primary{
       position:absolute; top:72px; left:0; right:0;
-      background:var(--ink); border-bottom:3px solid var(--gold);
+      background:var(--scarlet-dark); border-bottom:3px solid var(--gold);
       flex-direction:column; align-items:stretch; gap:0;
       max-height:0; overflow:hidden; transition:max-height .25s ease;
     }
     nav.primary.open{ max-height:220px; }
-    nav.primary a{ padding:16px 24px; border-bottom:1px solid var(--ink-soft); }
+    nav.primary a{ padding:16px 24px; border-bottom:1px solid rgba(0,0,0,.2); }
     .menu-btn{ display:inline-flex; }
   }
 
@@ -136,8 +145,8 @@
      ============================================================ */
   .hero{
     background:
-      radial-gradient(ellipse at 15% -10%, rgba(201,162,39,.14), transparent 55%),
-      linear-gradient(180deg, var(--ink) 0%, var(--ink-soft) 100%);
+      radial-gradient(ellipse at 15% -10%, rgba(201,162,39,.16), transparent 55%),
+      linear-gradient(155deg, var(--scarlet-deep) 0%, var(--ink) 52%, var(--ink-soft) 100%);
     color:var(--parchment);
     padding:76px 0 64px;
     position:relative;
@@ -145,10 +154,18 @@
     border-bottom:1px solid var(--scarlet-dark);
   }
   .hero::before{
-    /* faint stenciled rule motif */
     content:"";
     position:absolute; inset:0;
     background-image:repeating-linear-gradient(115deg, rgba(201,162,39,.05) 0 2px, transparent 2px 64px);
+    pointer-events:none;
+  }
+  .hero::after{
+    /* sun-ray watermark, after the eight-ray sun on the PMC seal & PH flag */
+    content:"";
+    position:absolute; top:-160px; right:-160px;
+    width:560px; height:560px; border-radius:50%;
+    background:repeating-conic-gradient(from 0deg, var(--gold) 0deg 9deg, transparent 9deg 45deg);
+    opacity:.15;
     pointer-events:none;
   }
   .hero-inner{ position:relative; max-width:760px; }
@@ -179,6 +196,7 @@
   .search-panel{
     background:var(--parchment);
     border:1px solid var(--gold-dim);
+    border-top:3px solid var(--gold);
     border-radius:var(--radius);
     padding:18px;
     box-shadow:0 18px 40px -18px rgba(0,0,0,.55);
@@ -197,7 +215,9 @@
     background:#fff; border:1px solid var(--parchment-dim);
     border-left:4px solid var(--scarlet);
     padding:4px 6px 4px 14px;
+    transition:box-shadow .15s;
   }
+  .search-field:focus-within{ box-shadow:0 0 0 3px rgba(201,162,39,.35); }
   .search-field svg{ flex:none; width:18px; height:18px; color:var(--scarlet); }
   .search-field input{
     flex:1; border:0; outline:0; background:transparent;
@@ -222,28 +242,27 @@
     display:block; font-family:var(--font-display); font-size:1.5rem;
     color:var(--gold-bright); font-weight:600;
   }
+  .hero-medallion{
+    position:absolute; top:50%; right:64px; transform:translateY(-50%);
+    width:240px; height:240px;
+    filter:drop-shadow(0 18px 30px rgba(0,0,0,.5));
+    pointer-events:none;
+  }
+  @media (max-width:1180px){ .hero-medallion{ right:24px; width:190px; height:190px; opacity:.85; } }
+  @media (max-width:980px){ .hero-medallion{ display:none; } }
 
   /* ============================================================
      CHEVRON DIVIDER  — rank-stripe motif used as a section seam
      ============================================================ */
   .chevrons{
     height:22px;
-    background:var(--parchment);
-    background-image: repeating-linear-gradient(
-      135deg, transparent, transparent 26px,
-      var(--gold) 26px, var(--gold) 27.5px,
-      transparent 27.5px, transparent 53px
-    ),
-    repeating-linear-gradient(
-      45deg, transparent, transparent 26px,
-      var(--gold) 26px, var(--gold) 27.5px,
-      transparent 27.5px, transparent 53px
-    );
+    background-color:var(--parchment);
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='40' height='24' viewBox='0 0 40 24'%3E%3Cpolyline points='0,4 20,18 40,4' fill='none' stroke='%23C9A227' stroke-width='3.4' stroke-linecap='round'/%3E%3C/svg%3E");
     background-repeat:repeat-x;
     background-position:center;
-    opacity:.55;
+    background-size:40px 24px;
   }
-  .chevrons.on-dark{ background-color:var(--ink); }
+  .chevrons.on-dark{ background-color:var(--scarlet-deep); }
 
   /* ============================================================
      SECTION SCAFFOLD
@@ -268,12 +287,12 @@
   }
   .pill{
     font-family:var(--font-display); font-size:.78rem; letter-spacing:.06em; text-transform:uppercase;
-    padding:9px 16px; border:1px solid var(--steel-light); border-radius:999px;
-    background:transparent; color:var(--steel);
+    padding:9px 16px; border:1px solid var(--gold-dim); border-radius:999px;
+    background:transparent; color:var(--scarlet-dark);
     transition:all .15s;
   }
-  .pill:hover{ border-color:var(--scarlet); color:var(--scarlet); }
-  .pill.active{ background:var(--scarlet); border-color:var(--scarlet); color:var(--parchment); }
+  .pill:hover{ border-color:var(--scarlet); color:var(--scarlet); background:rgba(124,16,36,.05); }
+  .pill.active{ background:var(--scarlet); border-color:var(--gold); color:#fff; box-shadow:0 0 0 1px var(--scarlet); }
   .controls .count{
     margin-left:auto; font-family:var(--font-mono); font-size:.75rem; color:var(--steel);
   }
@@ -302,9 +321,9 @@
   }
   .acq{ font-family:var(--font-mono); font-size:.68rem; color:var(--steel-light); letter-spacing:.04em; }
   .cat-tag{
-    font-family:var(--font-mono); font-size:.64rem; letter-spacing:.06em; text-transform:uppercase;
-    color:var(--scarlet); background:rgba(124,16,36,.08);
-    padding:3px 8px; border-radius:2px; white-space:nowrap;
+    font-family:var(--font-mono); font-size:.62rem; letter-spacing:.06em; text-transform:uppercase;
+    color:var(--gold-bright); background:var(--scarlet);
+    padding:4px 9px; border-radius:2px; white-space:nowrap;
   }
   .book-card h3{
     font-family:var(--font-body); font-weight:600; font-style:normal;
@@ -334,10 +353,10 @@
   .empty-state strong{ display:block; font-family:var(--font-display); color:var(--ink); margin-bottom:6px; text-transform:uppercase; letter-spacing:.04em;}
 
   /* ============================================================
-     EXTERNAL RESOURCES  (dark band)
+     EXTERNAL RESOURCES  (scarlet-to-ink band)
      ============================================================ */
   .resources{
-    background:var(--ink); color:var(--parchment);
+    background:linear-gradient(180deg, var(--scarlet-deep) 0%, var(--ink) 100%); color:var(--parchment);
   }
   .resources .eyebrow{ color:var(--gold); }
   .resources .block-head h2{ color:var(--parchment); }
@@ -348,15 +367,15 @@
     grid-template-columns:repeat(auto-fill, minmax(280px, 1fr));
   }
   .res-card{
-    background:var(--ink-soft);
-    border:1px solid #3a3129;
+    background:rgba(0,0,0,.22);
+    border:1px solid rgba(201,162,39,.25);
     border-left:3px solid var(--gold);
     padding:22px;
     display:flex; flex-direction:column; gap:10px;
     text-decoration:none; color:var(--parchment);
     transition:border-color .15s, background .15s;
   }
-  .res-card:hover{ border-left-color:var(--gold-bright); background:#2c241c; }
+  .res-card:hover{ border-left-color:var(--gold-bright); background:rgba(0,0,0,.34); }
   .res-card .icon{ width:30px; height:30px; color:var(--gold); }
   .res-card h3{ font-family:var(--font-display); font-size:1.02rem; text-transform:uppercase; letter-spacing:.02em; }
   .res-card p{ font-family:var(--font-body); font-size:.9rem; color:var(--parchment-dim); margin:0; flex:1; }
@@ -367,7 +386,7 @@
   .res-card .visit svg{ width:12px; height:12px; }
 
   .note-strip{
-    margin-top:30px; padding:16px 18px; border:1px solid #3a3129;
+    margin-top:30px; padding:16px 18px; border:1px solid rgba(201,162,39,.25);
     font-family:var(--font-mono); font-size:.76rem; color:var(--parchment-dim); line-height:1.6;
   }
   .note-strip strong{ color:var(--gold-bright); }
@@ -394,6 +413,8 @@
 </head>
 <body>
 
+<div class="top-ribbon" role="presentation"></div>
+
 <!-- ============================================================
      HEADER
      ============================================================ -->
@@ -401,9 +422,25 @@
   <div class="wrap">
     <a class="brand" href="#top">
       <svg class="crest" width="40" height="40" viewBox="0 0 40 40" aria-hidden="true">
-        <circle class="ring" cx="20" cy="20" r="18.5"/>
-        <path d="M20 8 L22.4 16.2 L31 16.2 L24 21.3 L26.4 29.5 L20 24.4 L13.6 29.5 L16 21.3 L9 16.2 L17.6 16.2 Z" fill="var(--gold)"/>
-        <path d="M20 18 v13 M15 24 h10 M13 31 h14" stroke="var(--parchment)" stroke-width="1.6" fill="none" stroke-linecap="round"/>
+        <circle class="ring" cx="20" cy="20" r="18.5" stroke-dasharray="1.4 2.6"/>
+        <path d="M8,9 L32,9 C32,20 30,30 20,36 C10,30 8,20 8,9 Z" fill="var(--scarlet)" stroke="var(--gold)" stroke-width="1.3"/>
+        <g stroke="var(--gold)" stroke-width="1.1" opacity=".85">
+          <line x1="20" y1="18" x2="30" y2="18"/>
+          <line x1="20" y1="18" x2="27.07" y2="25.07"/>
+          <line x1="20" y1="18" x2="20" y2="28"/>
+          <line x1="20" y1="18" x2="12.93" y2="25.07"/>
+          <line x1="20" y1="18" x2="10" y2="18"/>
+          <line x1="20" y1="18" x2="12.93" y2="10.93"/>
+          <line x1="20" y1="18" x2="20" y2="8"/>
+          <line x1="20" y1="18" x2="27.07" y2="10.93"/>
+        </g>
+        <g fill="none" stroke="var(--parchment)" stroke-width="1.8" stroke-linecap="round">
+          <circle cx="20" cy="11.5" r="1.7" fill="var(--parchment)" stroke="none"/>
+          <line x1="20" y1="13" x2="20" y2="27"/>
+          <line x1="16" y1="15.5" x2="24" y2="15.5"/>
+          <path d="M12,24 C12,28 16,30 20,27"/>
+          <path d="M28,24 C28,28 24,30 20,27"/>
+        </g>
       </svg>
       <span class="brand-text">
         <span class="top">Officers&rsquo; Library</span><br>
@@ -447,6 +484,29 @@
       <div><strong>2</strong>Ways to browse</div>
     </div>
   </div>
+
+  <svg class="hero-medallion" viewBox="0 0 40 40" aria-hidden="true">
+    <circle cx="20" cy="20" r="19" fill="none" stroke="var(--gold)" stroke-width=".5" stroke-dasharray="1 1.6"/>
+    <circle cx="20" cy="20" r="17" fill="none" stroke="var(--gold)" stroke-width=".3" opacity=".6"/>
+    <path d="M8,9 L32,9 C32,20 30,30 20,36 C10,30 8,20 8,9 Z" fill="var(--scarlet-deep)" stroke="var(--gold)" stroke-width="1"/>
+    <g stroke="var(--gold)" stroke-width="1" opacity=".85">
+      <line x1="20" y1="18" x2="30" y2="18"/>
+      <line x1="20" y1="18" x2="27.07" y2="25.07"/>
+      <line x1="20" y1="18" x2="20" y2="28"/>
+      <line x1="20" y1="18" x2="12.93" y2="25.07"/>
+      <line x1="20" y1="18" x2="10" y2="18"/>
+      <line x1="20" y1="18" x2="12.93" y2="10.93"/>
+      <line x1="20" y1="18" x2="20" y2="8"/>
+      <line x1="20" y1="18" x2="27.07" y2="10.93"/>
+    </g>
+    <g fill="none" stroke="var(--parchment)" stroke-width="1.6" stroke-linecap="round">
+      <circle cx="20" cy="11.5" r="1.7" fill="var(--parchment)" stroke="none"/>
+      <line x1="20" y1="13" x2="20" y2="27"/>
+      <line x1="16" y1="15.5" x2="24" y2="15.5"/>
+      <path d="M12,24 C12,28 16,30 20,27"/>
+      <path d="M28,24 C28,28 24,30 20,27"/>
+    </g>
+  </svg>
 </section>
 
 <div class="chevrons" role="presentation"></div>
@@ -496,6 +556,8 @@
   </div>
 </section>
 
+<div class="chevrons on-dark" role="presentation"></div>
+
 <!-- ============================================================
      FOOTER
      ============================================================ -->
@@ -504,15 +566,32 @@
     <div class="footer-top">
       <a class="brand" href="#top" style="text-decoration:none;">
         <svg class="crest" width="34" height="34" viewBox="0 0 40 40" aria-hidden="true">
-          <circle class="ring" cx="20" cy="20" r="18.5"/>
-          <path d="M20 8 L22.4 16.2 L31 16.2 L24 21.3 L26.4 29.5 L20 24.4 L13.6 29.5 L16 21.3 L9 16.2 L17.6 16.2 Z" fill="var(--gold)"/>
+          <circle class="ring" cx="20" cy="20" r="18.5" stroke-dasharray="1.4 2.6"/>
+          <path d="M8,9 L32,9 C32,20 30,30 20,36 C10,30 8,20 8,9 Z" fill="var(--scarlet)" stroke="var(--gold)" stroke-width="1.3"/>
+          <g stroke="var(--gold)" stroke-width="1.1" opacity=".85">
+            <line x1="20" y1="18" x2="30" y2="18"/>
+            <line x1="20" y1="18" x2="27.07" y2="25.07"/>
+            <line x1="20" y1="18" x2="20" y2="28"/>
+            <line x1="20" y1="18" x2="12.93" y2="25.07"/>
+            <line x1="20" y1="18" x2="10" y2="18"/>
+            <line x1="20" y1="18" x2="12.93" y2="10.93"/>
+            <line x1="20" y1="18" x2="20" y2="8"/>
+            <line x1="20" y1="18" x2="27.07" y2="10.93"/>
+          </g>
+          <g fill="none" stroke="var(--parchment)" stroke-width="1.8" stroke-linecap="round">
+            <circle cx="20" cy="11.5" r="1.7" fill="var(--parchment)" stroke="none"/>
+            <line x1="20" y1="13" x2="20" y2="27"/>
+            <line x1="16" y1="15.5" x2="24" y2="15.5"/>
+            <path d="M12,24 C12,28 16,30 20,27"/>
+            <path d="M28,24 C28,28 24,30 20,27"/>
+          </g>
         </svg>
         <span class="brand-text"><span class="top">Officers&rsquo; Library</span></span>
       </a>
       <p>Karangalan &middot; Katungkulan &middot; Kabayanihan</p>
     </div>
     <p>Built as a standing reading resource for Marine officers to locate professional and historical titles quickly, on any device.</p>
-    <p class="legal">This is an independent reading-collection tool and is not an official system of the Armed Forces of the Philippines, the Philippine Navy, or the Philippine Marine Corps. The sample titles above are a starting catalogue — replace the entries in the site&rsquo;s book list to reflect your unit&rsquo;s actual holdings.</p>
+    <p class="legal">This is an independent reading-collection tool and is not an official system of the Armed Forces of the Philippines, the Philippine Navy, or the Philippine Marine Corps. The titles above reflect this unit&rsquo;s curated catalogue — edit the book list in the site&rsquo;s code to keep it current.</p>
   </div>
 </footer>
 
@@ -531,7 +610,7 @@ const BOOKS = [
   { acq:"LDR-005", title:"True North: Discover your Authentic Leadership", author:"Bill George and Peter Sims", category:"Leadership & Command", blurb:"A leadership concept centered on finding and staying true to your core values, purpose, beliefs, and principles while leading others." },
   { acq:"LDR-006", title:"FILIPINO MILITARY LEADERSHIP BOOK 1", author:"Armed Forces of the Philippines Leadership Development Center (AFPLDC)", category:"Leadership & Command", blurb:"Introduces the fundamental principles of Filipino military leadership, emphasizing character, integrity, discipline, service, responsibility, and leading by example to accomplish the mission and care for personnel." },
   { acq:"LDR-007", title:"FILIPINO MILITARY LEADERSHIP BOOK 2", author:"Armed Forces of the Philippines Leadership Development Center (AFPLDC)", category:"Leadership & Command", blurb:"Builds on the principles of Filipino military leadership, focusing on developing effective leaders through character, competence, ethical decision-making, teamwork, discipline, and commitment to mission accomplishment and the welfare of personnel." },
-  { acq:"LDR-008", title:"THE LEADERSHIP SECRET OF COLIN POWELL", author:"OREN HARRARI (2002)", category:"Leadership & Command", blurb:" Presents Colin Powell’s leadership principles, emphasizing clear communication, decisiveness, teamwork, accountability, adaptability, and building trust while leading with integrity and confidence." },
+  { acq:"LDR-008", title:"THE LEADERSHIP SECRET OF COLIN POWELL", author:"OREN HARRARI (2002)", category:"Leadership & Command", blurb:" Presents Colin Powell's leadership principles, emphasizing clear communication, decisiveness, teamwork, accountability, adaptability, and building trust while leading with integrity and confidence." },
   { acq:"LDR-009", title:"THE 7 HABITS OF HIGHLY EFFECTIVE PEOPLE: POWERFUL LESSONS IN PERSONAL CHANGE", author:"STEPHEN COVEY", category:"Leadership & Command", blurb:" Presents seven principles for personal and professional effectiveness, emphasizing proactive behavior, clear goals, prioritization, mutual benefit, effective communication, cooperation, and continuous self-improvement." },
   { acq:"LDR-010", title:"KNOWING THE ENEMY: JIHADIST IDEOLOGY AND THE WAR ON TERROR", author:"MARY HABECK", category:"Leadership & Command", blurb:" Examines the ideological foundations, beliefs, and strategic objectives of jihadist movements" },
   { acq:"LDR-011", title:"PRINCIPLE-CENTERED LEADERSHIP", author:"STEPHEN R. COVEY", category:"Leadership & Command", blurb:" Presents a leadership approach based on timeless principles and values." },
@@ -544,37 +623,37 @@ const BOOKS = [
   { acq:"STR-002", title:"The Art of War", author:"Sun Tzu", category:"Strategy & Tactics", blurb:"Ancient principles on deception, terrain, and command that remain a first reference in strategic thought." },
   { acq:"STR-003", title:"Small Wars: Their Principles and Practice", author:"C. E. Callwell", category:"Strategy & Tactics", blurb:"A classic study of irregular, colonial, and counter-insurgent operations." },
   { acq:"STR-004", title:"WAR IN 140 CHARACTERS: HOW SOCIAL MEDIA IS RESHAPING CONFLICT IN THE TWENTY-FIRST CENTURY", author:" DAVID PATRIKARAKOS (2017)", category:"Strategy & Tactics", blurb:" examines how social media has transformed modern warfare by enabling rapid information sharing, propaganda, psychological operations, public mobilization, and influence during conflicts." },
-  { acq:"STR-005", title:"NATIONAL SECURITY REVIEW:RETHINKING PHILIPPINE NATIONAL INTERESTS: TOWARDS CALIBRATING NATIONAL POLICIES", author:" NDCP(2017)", category:"Strategy & Tactics", blurb:"examines the Philippines’ evolving national interests and argues for aligning national policies, security priorities, and strategic decisions with the country’s long-term national objectives and changing security environment."},
-  { acq:"STR-006", title:"THE HUNDRED-YEAR MARATHON: CHINA'S SECRET STRATEGY TO REPLACE AMERICA AS THE GLOBAL SUPERPOWER", author:"MICHAEL PILLSBURY", category:"Strategy & Tactics", blurb:"examines China’s long-term strategic ambitions"},
+  { acq:"STR-005", title:"NATIONAL SECURITY REVIEW:RETHINKING PHILIPPINE NATIONAL INTERESTS: TOWARDS CALIBRATING NATIONAL POLICIES", author:" NDCP(2017)", category:"Strategy & Tactics", blurb:"examines the Philippines' evolving national interests and argues for aligning national policies, security priorities, and strategic decisions with the country's long-term national objectives and changing security environment."},
+  { acq:"STR-006", title:"THE HUNDRED-YEAR MARATHON: CHINA'S SECRET STRATEGY TO REPLACE AMERICA AS THE GLOBAL SUPERPOWER", author:"MICHAEL PILLSBURY", category:"Strategy & Tactics", blurb:"examines China's long-term strategic ambitions"},
   { acq:"STR-007", title:"NO EASY DAY: THE FIRSTHAND ACCOUNT OF THE MISSION THAT KILLED OSAMA BIN LADEN ", author:"MARK OWEN AND KEVIN MAURER", category:"Strategy & Tactics", blurb:"provides a firsthand account of the U.S. Navy SEAL raid that killed Osama bin Laden in Abbottabad, Pakistan"},
-  { acq:"STR-008", title:"LESSONS FROM MARAWI: A STRATEGIC ASSESSMENT OF THE 2017 MARAWI SIEGE ", author:" FMWC (2017)", category:"Strategy & Tactics"},
-  { acq:"STR-009", title:"CARTEL: THE COMING INVASION OF MEXICO'S DRUG WAR ", author:" SYLVIA LONGMIRE", category:"Strategy & Tactics", blurb:"Examines Mexico’s drug cartels, their growing power and violence, and the potential impact of the drug war on Mexico’s security, governance, and relationship with the United States."},
+  { acq:"STR-008", title:"LESSONS FROM MARAWI: A STRATEGIC ASSESSMENT OF THE 2017 MARAWI SIEGE ", author:" FMWC (2017)", category:"Strategy & Tactics", blurb:""},
+  { acq:"STR-009", title:"CARTEL: THE COMING INVASION OF MEXICO'S DRUG WAR ", author:" SYLVIA LONGMIRE", category:"Strategy & Tactics", blurb:"Examines Mexico's drug cartels, their growing power and violence, and the potential impact of the drug war on Mexico's security, governance, and relationship with the United States."},
   { acq:"STR-010", title:"REPORTS OF GENERAL MCARTHUR: JAPANESE OPERATIONS IN THE SOUTHWEST PACIFIC AREA,VOLUME II, PART I", author:" GEN HAROLD K JOHNSON USA (1996)", category:"Strategy & Tactics",blurb:"Documents Japanese military operations in the Southwest Pacific during World War II"},
   { acq:"STR-011", title:"RIDO: CLAN FEUDING AND CONFLICT MANAGEMENT IN MINDANAO", author:" WILFREDO M TORRES", category:"Strategy & Tactics",blurb:"Examines the causes, dynamics, and consequences of rido (clan-based feuding) in Mindanao."},
-  { acq:"STR-012", title:"SUN TZU AND THE ART OF MODERN WARFARE", author:" MARK R. MCNEILY (2012)", category:"Strategy & Tactics",blurb:"Examines how Sun Tzu’s ancient principles of strategy, deception, intelligence, adaptability, and understanding the enemy remain relevant to modern warfare, leadership, and strategic decision-making."},
-  { acq:"STR-013", title:"ROCK SOLID", author:" MARITES VITUG", category:"Strategy & Tactics",blurb:"Examines the Philippines’ territorial and maritime disputes, particularly the country’s efforts to defend its sovereignty and national interests amid competing claims in the West Philippine Sea and the broader region."},
-  { acq:"STR-014", title:"THE MASTERMIND: DRUGS. EMPIRE. MURDER.BETRAYAL.", author:"EVAN RATLIFF", category:"Strategy & Tactics",blurb:"Investigates the rise and eventual downfall of a global criminal enterprise, exploring its leader’s use of technology, deception, money, and international networks to build a powerful drug-trafficking organization."},
+  { acq:"STR-012", title:"SUN TZU AND THE ART OF MODERN WARFARE", author:" MARK R. MCNEILY (2012)", category:"Strategy & Tactics",blurb:"Examines how Sun Tzu's ancient principles of strategy, deception, intelligence, adaptability, and understanding the enemy remain relevant to modern warfare, leadership, and strategic decision-making."},
+  { acq:"STR-013", title:"ROCK SOLID", author:" MARITES VITUG", category:"Strategy & Tactics",blurb:"Examines the Philippines' territorial and maritime disputes, particularly the country's efforts to defend its sovereignty and national interests amid competing claims in the West Philippine Sea and the broader region."},
+  { acq:"STR-014", title:"THE MASTERMIND: DRUGS. EMPIRE. MURDER.BETRAYAL.", author:"EVAN RATLIFF", category:"Strategy & Tactics",blurb:"Investigates the rise and eventual downfall of a global criminal enterprise, exploring its leader's use of technology, deception, money, and international networks to build a powerful drug-trafficking organization."},
   { acq:"STR-015", title:"WARFIGHTING – THE US MARINE CORPS BOOK OF STRATEGY", author:" GENERAL A. M. GRAY", category:"Strategy & Tactics",blurb:"Emphasizing maneuver warfare, initiative, adaptability, decentralized decision-making, and the importance of understanding the nature of war to achieve decisive results."},
 
 
 
   { acq:"DOC-001", title:"Warfighting (MCDP 1)", author:"United States Marine Corps", category:"Doctrine & Manuals", blurb:"The Corps' capstone statement on maneuver warfare as a philosophy of combat." },
   { acq:"DOC-002", title:"Command and Control (MCDP 6)", author:"United States Marine Corps", category:"Doctrine & Manuals", blurb:"Doctrine on decision-making, tempo, and mission command under uncertainty." },
-  { acq:"DOC-003", title:"DIPLOMACY", author:"HENRY KISSINGER, 1994", category:"Doctrine & Manuals", blurb:"Examines the history and practice of international diplomacy,." },
+  { acq:"DOC-003", title:"DIPLOMACY", author:"HENRY KISSINGER, 1994", category:"Doctrine & Manuals", blurb:"Examines the history and practice of international diplomacy." },
 
 
   { acq:"AMP-001", title:"Amphibious Warfare and Combined Operations", author:"Bernard Fergusson", category:"Amphibious & Naval Warfare", blurb:"A concise study of the planning and execution challenges unique to landing operations." },
   { acq:"AMP-002", title:"Utmost Savagery: The Three Days of Tarawa", author:"Joseph H. Alexander", category:"Amphibious & Naval Warfare", blurb:"A close operational account of one of the costliest amphibious assaults of the Pacific War." },
   { acq:"AMP-003", title:"Storm Landings: Epic Amphibious Battles in the Central Pacific", author:"Joseph H. Alexander", category:"Amphibious & Naval Warfare", blurb:"Comparative analysis of successive island-assault campaigns and the lessons each one forced." },
-  { acq:"AMP-004", title:"FIGHTING TECHNIQUES OF NAVAL WARFARE", author:"IAIN DICKIE, J.JESTICE, C. JORGENSEN, AND RS. RICE ", category:"Amphibious & Naval Warfare", blurb:"overview of naval warfare through history, examining tactics, strategies, weapons, ship operations, and major sea battles to explain how naval forces have fought and adapted across different eras." },
+  { acq:"AMP-004", title:"FIGHTING TECHNIQUES OF NAVAL WARFARE", author:"IAIN DICKIE, J.JESTICE, C. JORGENSEN, AND RS. RICE ", category:"Amphibious & Naval Warfare", blurb:"An overview of naval warfare through history, examining tactics, strategies, weapons, ship operations, and major sea battles to explain how naval forces have fought and adapted across different eras." },
   { acq:"AMP-005", title:"NAVAL WEAPONS SYSTEMS AND THE CONTEMPORARY LAW OF WAR", author:"JAMES J. BUSUTILL ", category:"Amphibious & Naval Warfare", blurb:"Examines the relationship between modern naval weapons and the laws governing armed conflict." },
 
   { acq:"HIS-001", title:"Tarawa: The Story of a Battle", author:"Robert Sherrod", category:"Military History", blurb:"A war correspondent's firsthand account of the landing and its brutal first day ashore." },
   { acq:"HIS-002", title:"The Guns at Last Light", author:"Rick Atkinson", category:"Military History", blurb:"The closing volume of the Liberation Trilogy, covering the campaign from Normandy to Germany's surrender." },
   { acq:"HIS-003", title:"American Caesar: Douglas MacArthur 1880–1964", author:"William Manchester", category:"Military History", blurb:"A biography of the general whose command shaped much of the Pacific War in the Philippines." },
-  { acq:"HIS-004", title:"ELITE FIGHTING FORCES: FROM THE PRAETORIAN GUARD TO THE GREEN BERETS", author:"JEREMY BLACK", category:"Military History", blurb:"examines the history and evolution of elite military units from ancient Rome to modern special forces." },
-  { acq:"HIS-005", title:"ISRAEL’S SECRET WAR: A HISTORY OF ISRAEL’S INTELLIGENCE SERVICES", author:"IAN BLACK AND BENNY MORRIS", category:"Military History", blurb:" Examines the development and operations of Israel’s intelligence organizations." },
-  { acq:"HIS-006", title:"SEA POWER: THE HISTORY AND GEOPOLITICS OF THE WORLD’S OCEANS", author:"ADM JAMES STAVRIDIS USN(RET) (2017)", category:"Military History", blurb:" Explores how oceans have shaped global history, geopolitics, trade, and military power, emphasizing the continuing importance of sea power in international security and national strategy." },
+  { acq:"HIS-004", title:"ELITE FIGHTING FORCES: FROM THE PRAETORIAN GUARD TO THE GREEN BERETS", author:"JEREMY BLACK", category:"Military History", blurb:"Examines the history and evolution of elite military units from ancient Rome to modern special forces." },
+  { acq:"HIS-005", title:"ISRAEL'S SECRET WAR: A HISTORY OF ISRAEL'S INTELLIGENCE SERVICES", author:"IAN BLACK AND BENNY MORRIS", category:"Military History", blurb:" Examines the development and operations of Israel's intelligence organizations." },
+  { acq:"HIS-006", title:"SEA POWER: THE HISTORY AND GEOPOLITICS OF THE WORLD'S OCEANS", author:"ADM JAMES STAVRIDIS USN(RET) (2017)", category:"Military History", blurb:" Explores how oceans have shaped global history, geopolitics, trade, and military power, emphasizing the continuing importance of sea power in international security and national strategy." },
   { acq:"HIS-007", title:"FALKLANDS WAR", author:"MARTIN MIDDLEBROOK (2012)", category:"Military History", blurb:"Provides a detailed account of the 1982 conflict between Argentina and the United Kingdom." },
   { acq:"HIS-008", title:"THE GULF WAR: OPERATION DESERT STORM 1990-1991 (MODERN WARFARE)", author:"ANTHONY TUCKER- JONES (2014)", category:"Military History", blurb:"Examines the coalition campaign against Iraq following its invasion of Kuwait, focusing on military strategy, air and ground operations, advanced weapons, leadership, and the lessons of modern warfare demonstrated during Desert Storm." },
 
@@ -586,9 +665,8 @@ const BOOKS = [
   { acq:"PRO-001", title:"The U.S. Naval Institute on Naval Leadership", author:"Naval Institute Press (ed.)", category:"Professional Reading", blurb:"A curated set of essays on command, character, and decision-making at sea." },
   { acq:"PRO-002", title:"Supplying War: Logistics from Wallenstein to Patton", author:"Martin van Creveld", category:"Professional Reading", blurb:"A study of how logistics — not just strategy — has decided campaigns across four centuries." },
   { acq:"PRO-003", title:"The Utility of Force", author:"Rupert Smith", category:"Professional Reading", blurb:"An argument that modern conflict is fought 'among the people,' and what that demands of commanders." },
-  { acq:"PRO-003", title:"NATIONAL SECURITY POLICY 2017-2022: FOR CHANGE AND WELL-BEING OF THE FILIPINO PEOPLE", author:"Office of the President(2017)", category:"Professional Reading", blurb:"outlines the Philippines’ national security priorities, emphasizing the protection of sovereignty, territorial integrity, peace and order, economic development, and the welfare of the Filipino people" },
-  { acq:"PRO-004", title:"PHILIPPINE SECURITY IN THE AGE OF TERROR:NATIONAL, REGIONAL, AND GLOBAL CHALLENGES IN THE POST-9/11 WORLD", author:"ROMMEL BANLAOI (2009)", category:"Professional Reading", blurb:"Examines the Philippines’ security challenges after 9/11, focusing on terrorism, insurgency, regional threats, and the need for national, regional, and international cooperation to strengthen Philippine security." },
-
+  { acq:"PRO-003", title:"NATIONAL SECURITY POLICY 2017-2022: FOR CHANGE AND WELL-BEING OF THE FILIPINO PEOPLE", author:"Office of the President(2017)", category:"Professional Reading", blurb:"outlines the Philippines' national security priorities, emphasizing the protection of sovereignty, territorial integrity, peace and order, economic development, and the welfare of the Filipino people" },
+  { acq:"PRO-004", title:"PHILIPPINE SECURITY IN THE AGE OF TERROR:NATIONAL, REGIONAL, AND GLOBAL CHALLENGES IN THE POST-9/11 WORLD", author:"ROMMEL BANLAOI (2009)", category:"Professional Reading", blurb:"Examines the Philippines' security challenges after 9/11, focusing on terrorism, insurgency, regional threats, and the need for national, regional, and international cooperation to strengthen Philippine security." }
 ];
 
 const CATEGORIES = ["All", ...new Set(BOOKS.map(b => b.category))];
@@ -684,7 +762,7 @@ function renderBooks(){
       b.title.toLowerCase().includes(term) ||
       b.author.toLowerCase().includes(term) ||
       b.category.toLowerCase().includes(term) ||
-      b.blurb.toLowerCase().includes(term);
+      (b.blurb || '').toLowerCase().includes(term);
     return matchesCat && matchesTerm;
   });
 
@@ -705,7 +783,7 @@ function renderBooks(){
       </div>
       <h3>${b.title}</h3>
       <span class="author">${b.author}</span>
-      <p class="blurb">${b.blurb}</p>
+      <p class="blurb">${b.blurb || ''}</p>
       <div class="row-bottom">
         <a class="find-link" href="https://www.google.com/search?tbm=bks&q=${q}" target="_blank" rel="noopener noreferrer">
           Find a copy
