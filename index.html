@@ -534,6 +534,11 @@ const BOOKS = [
   { acq:"LDR-008", title:"THE LEADERSHIP SECRET OF COLIN POWELL", author:"OREN HARRARI (2002)", category:"Leadership & Command", blurb:" Presents Colin Powell’s leadership principles, emphasizing clear communication, decisiveness, teamwork, accountability, adaptability, and building trust while leading with integrity and confidence." },
   { acq:"LDR-009", title:"THE 7 HABITS OF HIGHLY EFFECTIVE PEOPLE: POWERFUL LESSONS IN PERSONAL CHANGE", author:"STEPHEN COVEY", category:"Leadership & Command", blurb:" Presents seven principles for personal and professional effectiveness, emphasizing proactive behavior, clear goals, prioritization, mutual benefit, effective communication, cooperation, and continuous self-improvement." },
   { acq:"LDR-010", title:"KNOWING THE ENEMY: JIHADIST IDEOLOGY AND THE WAR ON TERROR", author:"MARY HABECK", category:"Leadership & Command", blurb:" Examines the ideological foundations, beliefs, and strategic objectives of jihadist movements" },
+  { acq:"LDR-011", title:"PRINCIPLE-CENTERED LEADERSHIP", author:"STEPHEN R. COVEY", category:"Leadership & Command", blurb:" Presents a leadership approach based on timeless principles and values." },
+  { acq:"LDR-012", title:"THE 8TH HABIT FROM EFFECTIVENESS TO GREATNESS", author:" STEPHEN R. COVEY (2004)", category:"Leadership & Command", blurb:"Teaches individuals and leaders to move beyond effectiveness by discovering their unique voice, developing their potential, and inspiring others to find their own purpose and contribute meaningfully." },
+
+
+
 
   { acq:"STR-001", title:"On War", author:"Carl von Clausewitz", category:"Strategy & Tactics", blurb:"The foundational treatise on the nature, friction, and political character of war." },
   { acq:"STR-002", title:"The Art of War", author:"Sun Tzu", category:"Strategy & Tactics", blurb:"Ancient principles on deception, terrain, and command that remain a first reference in strategic thought." },
@@ -546,15 +551,23 @@ const BOOKS = [
   { acq:"STR-009", title:"CARTEL: THE COMING INVASION OF MEXICO'S DRUG WAR ", author:" SYLVIA LONGMIRE", category:"Strategy & Tactics", blurb:"Examines Mexico’s drug cartels, their growing power and violence, and the potential impact of the drug war on Mexico’s security, governance, and relationship with the United States."},
   { acq:"STR-010", title:"REPORTS OF GENERAL MCARTHUR: JAPANESE OPERATIONS IN THE SOUTHWEST PACIFIC AREA,VOLUME II, PART I", author:" GEN HAROLD K JOHNSON USA (1996)", category:"Strategy & Tactics",blurb:"Documents Japanese military operations in the Southwest Pacific during World War II"},
   { acq:"STR-011", title:"RIDO: CLAN FEUDING AND CONFLICT MANAGEMENT IN MINDANAO", author:" WILFREDO M TORRES", category:"Strategy & Tactics",blurb:"Examines the causes, dynamics, and consequences of rido (clan-based feuding) in Mindanao."},
+  { acq:"STR-012", title:"SUN TZU AND THE ART OF MODERN WARFARE", author:" MARK R. MCNEILY (2012)", category:"Strategy & Tactics",blurb:"Examines how Sun Tzu’s ancient principles of strategy, deception, intelligence, adaptability, and understanding the enemy remain relevant to modern warfare, leadership, and strategic decision-making."},
+  { acq:"STR-013", title:"ROCK SOLID", author:" MARITES VITUG", category:"Strategy & Tactics",blurb:"Examines the Philippines’ territorial and maritime disputes, particularly the country’s efforts to defend its sovereignty and national interests amid competing claims in the West Philippine Sea and the broader region."},
+  { acq:"STR-014", title:"THE MASTERMIND: DRUGS. EMPIRE. MURDER.BETRAYAL.", author:"EVAN RATLIFF", category:"Strategy & Tactics",blurb:"Investigates the rise and eventual downfall of a global criminal enterprise, exploring its leader’s use of technology, deception, money, and international networks to build a powerful drug-trafficking organization."},
+  { acq:"STR-015", title:"WARFIGHTING – THE US MARINE CORPS BOOK OF STRATEGY", author:" GENERAL A. M. GRAY", category:"Strategy & Tactics",blurb:"Emphasizing maneuver warfare, initiative, adaptability, decentralized decision-making, and the importance of understanding the nature of war to achieve decisive results."},
+
 
 
   { acq:"DOC-001", title:"Warfighting (MCDP 1)", author:"United States Marine Corps", category:"Doctrine & Manuals", blurb:"The Corps' capstone statement on maneuver warfare as a philosophy of combat." },
   { acq:"DOC-002", title:"Command and Control (MCDP 6)", author:"United States Marine Corps", category:"Doctrine & Manuals", blurb:"Doctrine on decision-making, tempo, and mission command under uncertainty." },
+  { acq:"DOC-003", title:"DIPLOMACY", author:"HENRY KISSINGER, 1994", category:"Doctrine & Manuals", blurb:"Examines the history and practice of international diplomacy,." },
+
 
   { acq:"AMP-001", title:"Amphibious Warfare and Combined Operations", author:"Bernard Fergusson", category:"Amphibious & Naval Warfare", blurb:"A concise study of the planning and execution challenges unique to landing operations." },
   { acq:"AMP-002", title:"Utmost Savagery: The Three Days of Tarawa", author:"Joseph H. Alexander", category:"Amphibious & Naval Warfare", blurb:"A close operational account of one of the costliest amphibious assaults of the Pacific War." },
   { acq:"AMP-003", title:"Storm Landings: Epic Amphibious Battles in the Central Pacific", author:"Joseph H. Alexander", category:"Amphibious & Naval Warfare", blurb:"Comparative analysis of successive island-assault campaigns and the lessons each one forced." },
-  { acq:"AMP-004", title:"FIGHTING TECHNIQUES OF NAVAL WARFARE", author:"IAIN DICKIE, J.JESTICE, C. JORGENSEN, AND RS. RICE ", category:"overview of naval warfare through history, examining tactics, strategies, weapons, ship operations, and major sea battles to explain how naval forces have fought and adapted across different eras." },
+  { acq:"AMP-004", title:"FIGHTING TECHNIQUES OF NAVAL WARFARE", author:"IAIN DICKIE, J.JESTICE, C. JORGENSEN, AND RS. RICE ", category:"Amphibious & Naval Warfare", blurb:"overview of naval warfare through history, examining tactics, strategies, weapons, ship operations, and major sea battles to explain how naval forces have fought and adapted across different eras." },
+  { acq:"AMP-005", title:"NAVAL WEAPONS SYSTEMS AND THE CONTEMPORARY LAW OF WAR", author:"JAMES J. BUSUTILL ", category:"Amphibious & Naval Warfare", blurb:"Examines the relationship between modern naval weapons and the laws governing armed conflict." },
 
   { acq:"HIS-001", title:"Tarawa: The Story of a Battle", author:"Robert Sherrod", category:"Military History", blurb:"A war correspondent's firsthand account of the landing and its brutal first day ashore." },
   { acq:"HIS-002", title:"The Guns at Last Light", author:"Rick Atkinson", category:"Military History", blurb:"The closing volume of the Liberation Trilogy, covering the campaign from Normandy to Germany's surrender." },
@@ -562,6 +575,8 @@ const BOOKS = [
   { acq:"HIS-004", title:"ELITE FIGHTING FORCES: FROM THE PRAETORIAN GUARD TO THE GREEN BERETS", author:"JEREMY BLACK", category:"Military History", blurb:"examines the history and evolution of elite military units from ancient Rome to modern special forces." },
   { acq:"HIS-005", title:"ISRAEL’S SECRET WAR: A HISTORY OF ISRAEL’S INTELLIGENCE SERVICES", author:"IAN BLACK AND BENNY MORRIS", category:"Military History", blurb:" Examines the development and operations of Israel’s intelligence organizations." },
   { acq:"HIS-006", title:"SEA POWER: THE HISTORY AND GEOPOLITICS OF THE WORLD’S OCEANS", author:"ADM JAMES STAVRIDIS USN(RET) (2017)", category:"Military History", blurb:" Explores how oceans have shaped global history, geopolitics, trade, and military power, emphasizing the continuing importance of sea power in international security and national strategy." },
+  { acq:"HIS-007", title:"FALKLANDS WAR", author:"MARTIN MIDDLEBROOK (2012)", category:"Military History", blurb:"Provides a detailed account of the 1982 conflict between Argentina and the United Kingdom." },
+  { acq:"HIS-008", title:"THE GULF WAR: OPERATION DESERT STORM 1990-1991 (MODERN WARFARE)", author:"ANTHONY TUCKER- JONES (2014)", category:"Military History", blurb:"Examines the coalition campaign against Iraq following its invasion of Kuwait, focusing on military strategy, air and ground operations, advanced weapons, leadership, and the lessons of modern warfare demonstrated during Desert Storm." },
 
 
   { acq:"PHL-001", title:"The Fall of the Philippines", author:"Louis Morton", category:"Philippine Military History", blurb:"The U.S. Army's official history of the 1941–42 defense of Luzon, Bataan, and Corregidor." },
